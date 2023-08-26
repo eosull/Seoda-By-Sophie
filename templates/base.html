@@ -31,7 +31,54 @@
     <title>Seoda By Sophie{% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top"></header>
+    <header class="container-fluid fixed-top">
+      <div class="row">
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+          <a href="{% url 'home' %}" class="nav-link main-logo-link">
+            <h2 class="my-0"><strong>Seoda</strong> By Sophie</h2></a>
+        </div>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"><h3>Search TBC</h3></div>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+          <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+            <li class="list-inline-item dropdown">
+
+              <div class="text-center dropdown">
+                <a href="#" class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+              <ul class="dropdown-menu border-0" aria-labelledby="dropdownMenuLink">
+                {% if request.user.is_authenticated %}
+                  {% if request.user.is_superuser %}
+                    <li><a href="" class="dropdown-item">Product Management</a></li>
+                  {% endif %}
+                  <li><a href="" class="dropdown-item">My Profile</a></li>
+                  <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
+                {% else %}
+                  <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
+                  <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
+                {% endif %}
+              </ul>
+            </div>
+            </li>
+              
+            <li class="list-inline-item">
+              <a href="" class="{% if grand_total %} text-info font-weight-bold{% else %}{% endif %} nav-link">
+                <div class="text-center">
+                  <div>Basket</div>
+                  <p class="my-0">
+                    {% if grand_total %}
+                      €{{ grand_total|floatformat:2 }}
+                    {% else %}
+                      €0.00
+                    {% endif %}
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
 
     {% if messages %}
       <div class="message-container"></div>
