@@ -1,0 +1,15 @@
+:root {
+    --pink-white: rgb(255,247,257);
+    --black: rgb(0,0,0);
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: var(--pink-white);
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: var(--black);
+}
