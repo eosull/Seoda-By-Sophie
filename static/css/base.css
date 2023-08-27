@@ -12,7 +12,7 @@ html {
 
 body {
     background-color: var(--pink-white);
-    height: calc(100vh - 164px);
+    height: calc(100vh - 124px);
     color: var(--black);
 }
 
@@ -31,6 +31,10 @@ header {
 /* Header Styling */
 .main-logo-link {
     width: fit-content;
+}
+
+.header-container {
+    padding-top: 124px;
 }
 
 /* Landing Page Styling */
@@ -58,17 +62,13 @@ header {
     }
   }
   
-  /* fixed top navbar only on medium and up */
-  @media (min-width: 992px) {
-      .fixed-top-desktop-only {
-          position: fixed;
-          top: 0;
-          right: 0;
-          left: 0;
-          z-index: 1030;
-      }
-  
-      .header-container {
-          padding-top: 164px;
-      }
-  }
+/* Fixed top navbar only on medium and up */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+}
