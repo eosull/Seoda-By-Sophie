@@ -24,6 +24,10 @@ header {
     text-transform: uppercase;
 }
 
+.border-blue {
+    border: 3px solid var(--blue) !important;
+}
+
 /* Header Styling */
 .main-logo-link {
     width: fit-content;
@@ -31,13 +35,11 @@ header {
 
 /* Landing Page Styling */
 
-.shop-now-button {
+.site-button-primary {
     color: var(--black);
-    border-width: 5px;
-    border-color: var(--blue);
 }
 
-.shop-now-button:hover {
+.site-button-primary:hover {
     background-color: var(--blue);
     color: black;
     border-color: var(--blue);

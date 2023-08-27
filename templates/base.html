@@ -38,7 +38,18 @@
           <a href="{% url 'home' %}" class="nav-link main-logo-link">
             <h2 class="my-0 text-logo main-logo-link"><strong>Seoda</strong> By Sophie</h2></a>
         </div>
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0"><h3>Search TBC</h3></div>
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+          <form action="" method="GET">
+            <div class="input-group w-100">
+              <input class="form-control" type="text" name="q" placeholder="Search">
+              <div class="form-control-append">
+                <button class="form-control border-blue btn site-button-primary" type="submit">
+                  Search
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
           <ul class="list-inline list-unstyled text-center text-lg-right my-0">
             <li class="list-inline-item dropdown">
