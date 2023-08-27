@@ -1,15 +1,72 @@
+/* Colour variables */
 :root {
     --pink-white: rgb(255,247,257);
+    --blue: rgb(215,250,250);
     --black: rgb(0,0,0);
 }
 
+/* Site-Wide Styling */
 html {
     height: 100%;
 }
 
 body {
     background-color: var(--pink-white);
-    background-size: cover;
     height: calc(100vh - 164px);
     color: var(--black);
 }
+
+header {
+    height: auto;
+}
+
+.text-logo {
+    text-transform: uppercase;
+}
+
+/* Header Styling */
+.main-logo-link {
+    width: fit-content;
+}
+
+/* Landing Page Styling */
+
+.shop-now-button {
+    color: var(--black);
+    border-width: 5px;
+    border-color: var(--blue);
+}
+
+.shop-now-button:hover {
+    background-color: var(--blue);
+    color: black;
+    border-color: var(--blue);
+}
+
+.landing-content {
+    background: url('/media/dev-hero.jpg') no-repeat center center fixed;
+    clear: both;
+}
+/* Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+      max-width: 80%;
+    }
+  }
+  
+  /* fixed top navbar only on medium and up */
+  @media (min-width: 992px) {
+      .fixed-top-desktop-only {
+          position: fixed;
+          top: 0;
+          right: 0;
+          left: 0;
+          z-index: 1030;
+      }
+  
+      .header-container {
+          padding-top: 164px;
+      }
+  }
