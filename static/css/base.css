@@ -37,6 +37,10 @@ header {
     padding-top: 124px;
 }
 
+.mobile-search {
+    width: 100vw !important;
+}
+
 /* Landing Page Styling */
 
 .site-button-primary {
