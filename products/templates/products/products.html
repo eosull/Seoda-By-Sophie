@@ -36,11 +36,20 @@
                                 <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ product.name }}">
                             </a>
                             {% endif %}
-                            {{ product.name }}
-                            <hr>
-                            {{ product.description }}
-                            <hr>
-                            {{ product.price }}
+                            <div class="card-body pb-0">
+                                <p class="mb-0">{{ product.name }}</p>
+                            </div>
+                            <div class="card-footer pt-0 text-left">
+                                <div class="row">
+                                    <div class="col">
+                                        {% if on_sale %}
+                                            <p class="lead mb-0 text-left font-weight-bold">€{{ product.sale_price }}</p>
+                                        {% else %}
+                                            <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
