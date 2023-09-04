@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light d-block d-lg-none">
+<nav class="navbar navbar-expand-lg bg-light d-block">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
@@ -8,8 +8,8 @@
                     Products
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="productMenuLink">
-                    <li><a href="#" class="dropdown-item">By Price</a></li>
-                    <li><a href="#" class="dropdown-item">By Category</a></li>
+                    <li><a href="{% url 'products' %}?category=Another" class="dropdown-item">Another Category</a></li>
+                    <li><a href="{% url 'products' %}?category=test" class="dropdown-item">Test Category</a></li>
                     <li><a href="{% url 'products' %}" class="dropdown-item">All Products</a></li>
                   </ul>
             </div>
