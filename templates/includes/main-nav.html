@@ -10,6 +10,8 @@
                   <ul class="dropdown-menu" aria-labelledby="productMenuLink">
                     <li><a href="{% url 'products' %}?category=Another" class="dropdown-item">Another Category</a></li>
                     <li><a href="{% url 'products' %}?category=test" class="dropdown-item">Test Category</a></li>
+                    <li><a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">Price Low to High</a></li>
+                    <li><a href="{% url 'products' %}?sort=price&direction=desc" class="dropdown-item">Price High to Low</a></li>
                     <li><a href="{% url 'products' %}" class="dropdown-item">All Products</a></li>
                   </ul>
             </div>
@@ -20,9 +22,10 @@
                     Special Offers
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="offersMenuLink">
-                    <li><a href="#" class="dropdown-item">New In</a></li>
-                    <li><a href="#" class="dropdown-item">Last Chance</a></li>
-                    <li><a href="#" class="dropdown-item">Special Offers</a></li>
+                    <li><a href="{% url 'products' %}?sort=is_new&direction=desc" class="dropdown-item">New In</a></li>
+                    <!-- <li><a href="#" class="dropdown-item">Last Chance</a></li>
+                    <li><a href="#" class="dropdown-item">Special Offers</a></li> -->
+                    <li><a href="{% url 'products' %}?sort=is_featured&direction=desc" class="dropdown-item">Featured</a></li>
                   </ul>
             </div>
         </li>

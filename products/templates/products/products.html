@@ -15,9 +15,17 @@
     <div class="row">
         <div class="col text-center mt-3">
             <h2 class="text-logo">Products</h2>
+            {% for cat in current_categories %}
+
+                <a class="text-decoration-none" href="{% url 'products' %}?category={{ cat.name }}">
+                    <span class="badge badge-white text-black p-2 mt-2">{{ cat.friendly_name }}</span>
+                </a>
+
+            {% endfor %}
             <hr class="mb-2">
         </div>
     </div>
+
     <div class="row">
         <div class="col-10 offset-1">
             <div class="row mt-1 mb-2">
@@ -49,6 +57,15 @@
                             <div class="card-body pb-0">
                                 <p class="mb-0">{{ product.name }}</p>
                             </div>
+                            {% if product.category %}
+
+                            <p class="small mt-1 mb-0">
+                                <a class="text-muted nav-link" href="{% url 'products' %}?category={{ product.category.name }}">
+                                    {{ product.category.friendly_name }}
+                                </a>
+                            </p>
+
+                            {% endif %}
                             <div class="card-footer pt-0 text-left">
                                 <div class="row">
                                     <div class="col">
