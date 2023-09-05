@@ -10,7 +10,8 @@ def all_products(request):
     products = Product.objects.all().order_by('-is_new', 'is_featured')
     query = None
     category = None
-    categories = None
+    categories = Category.objects.all()
+    sel_category = None
     sort = None
     direction = None
 
@@ -30,9 +31,9 @@ def all_products(request):
             products = products.order_by(sortkey)
 
         if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            sel_category = request.GET['category'].split(',')
+            products = products.filter(category__name__in=sel_category)
+            sel_category = Category.objects.filter(name__in=sel_category)
 
         if 'q' in request.GET:
             query = request.GET['q']
@@ -48,7 +49,8 @@ def all_products(request):
     context = {
         'products': products,
         'search_term': query,
-        'current_categories': categories,
+        'categories': categories,
+        'current_category': sel_category,
         'current_sorting': current_sorting,
     }
 

@@ -15,12 +15,15 @@
     <div class="row">
         <div class="col text-center mt-3">
             <h2 class="text-logo">Products</h2>
-            {% for cat in current_categories %}
 
-                <a class="text-decoration-none" href="{% url 'products' %}?category={{ cat.name }}">
-                    <span class="badge badge-white text-black p-2 mt-2">{{ cat.friendly_name }}</span>
+            <a class="text-decoration-none border-blue btn site-button-primary" href="{% url 'products' %}">
+                <span>All Products</span>
+            </a>
+
+            {% for cat in categories %}
+                <a class="text-decoration-none border-blue btn site-button-primary" href="{% url 'products' %}?category={{ cat.name }}">
+                    <span>{{ cat.friendly_name }}</span>
                 </a>
-
             {% endfor %}
             <hr class="mb-2">
         </div>
