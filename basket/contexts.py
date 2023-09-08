@@ -1,4 +1,7 @@
+from decimal import Decimal
 from django.conf import settings
+from django.shortcuts import get_object_or_404
+from products.models import Product
 
 
 def basket_contents(request):
@@ -7,14 +10,27 @@ def basket_contents(request):
     total = 0 
     product_count = 0
     delivery = settings.STANDARD_DELIVERY
+    basket = request.session.get('basket', {})
 
-    grand_total = total + delivery
+    for product_id, quantity in basket.items():
+        product = get_object_or_404(Product, pk=product_id)
+        total += quantity * product.price
+        product_count += quantity
+        basket_items.append({
+            'product_id': product_id,
+            'quantity': quantity,
+            'product': product,
+        })
+
+    grand_total = total + Decimal(delivery)
+    print(grand_total)
 
     context = {
         'basket_items': basket_items,
         'total': total,
         'product_count': product_count,
         'delivery': delivery,
+        'grand_total': grand_total,
     }
 
     return context
