@@ -27,7 +27,6 @@ def basket_contents(request):
         delivery = 0
         
     grand_total = total + Decimal(delivery)
-    print(grand_total)
 
     context = {
         'basket_items': basket_items,
