@@ -7,9 +7,8 @@ from products.models import Product
 def basket_contents(request):
 
     basket_items = []
-    total = 0 
+    total = 0
     product_count = 0
-    delivery = settings.STANDARD_DELIVERY
     basket = request.session.get('basket', {})
 
     for product_id, quantity in basket.items():
@@ -22,6 +21,11 @@ def basket_contents(request):
             'product': product,
         })
 
+    if product_count:
+        delivery = settings.STANDARD_DELIVERY
+    else:
+        delivery = 0
+        
     grand_total = total + Decimal(delivery)
     print(grand_total)
 
