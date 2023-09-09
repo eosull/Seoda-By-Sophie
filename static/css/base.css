@@ -35,6 +35,11 @@ header {
     color: var(--blue);
 }
 
+.update-link,
+.remove-item {
+    cursor : pointer !important;
+}
+
 /* Header Styling */
 .main-logo-link {
     width: fit-content;
