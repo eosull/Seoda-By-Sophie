@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'basket',
+    'crispy_forms',
 
 ]
 
@@ -77,6 +78,10 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'basket.contexts.basket_contents',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -161,3 +166,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STANDARD_DELIVERY = 4.99
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
