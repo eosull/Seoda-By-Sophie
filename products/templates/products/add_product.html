@@ -14,9 +14,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="overlay"></div>
+{% if request.user.is_superuser %}
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <hr>
                 <h2 class="logo-font mb-4">Product Management</h2>
@@ -25,8 +25,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 col-md-6">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 text-center">
                 <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form|crispy }}
@@ -38,4 +38,7 @@
             </div>
         </div>
     </div>
+{% else %}
+{% include 'includes/staff_access.html' %}
+{% endif %}
 {% endblock %}
