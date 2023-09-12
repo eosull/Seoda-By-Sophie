@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 text-center">
+            <hr>
+            <h2 class="logo-font mb-4">Confirm Delete</h2>
+            <h5 class="text-muted">Are you sure you want to delete product <em>{{ product.name }}</em></h5>
+            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+            <a class="btn site-button-primary border-blue" href="{% url 'product_detail' product.id %}">Cancel</a>
+            <hr>
+        </div>
+    </div>
+</div>
+{% else %}
+{% include 'includes/staff_access.html' %}
+{% endif %}
+{% endblock %}
