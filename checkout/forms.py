@@ -2,9 +2,9 @@ from django import forms
 from .models import Order
 
 
-class OrderForm(forms.modelForm):
+class OrderForm(forms.ModelForm):
     class Meta:
-        model: Order
+        model = Order
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'town_or_city', 'postcode', 'country',
@@ -32,5 +32,5 @@ class OrderForm(forms.modelForm):
             else:
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].widget.attrs['class'] = 'stripe-style-input py-2 my-2'
             self.fields[field].label = False
