@@ -1,4 +1,6 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.contrib import messages
+from products.models import Product
 
 
 def view_basket(request):
@@ -8,6 +10,7 @@ def view_basket(request):
 
 def add_to_basket(request, product_id):
     # Add specified quantity of product to basket
+    product = get_object_or_404(Product, pk=product_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     basket = request.session.get('basket', {})
@@ -16,6 +19,7 @@ def add_to_basket(request, product_id):
         basket[product_id] += quantity
     else:
         basket[product_id] = quantity
+        messages.success(request, f'{product.name} added successfully to basket')
 
     request.session['basket'] = basket
     return redirect(redirect_url)
