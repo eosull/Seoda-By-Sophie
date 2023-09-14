@@ -1,0 +1,59 @@
+/* Colour variables */
+:root {
+    --pink-white: rgb(255,247,257);
+    --pink-dark: rgb(255,214,214);
+    --pink-light: rgb(244,215,236);
+    --blue: rgb(215,250,250);
+    --black: rgb(0,0,0);
+}
+
+/* Checkout form styling */
+#payment-form .form-control,
+#card-element {
+    color: var(--black);
+    border: 2px solid var(--blue);
+}
+
+.fieldset-label {
+    position: relative;
+    right: .5rem;
+}
+
+/* Stripe element styling */
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-style-input::placeholder {
+    color: #aab7c4;
+}
+
+.fieldset-label {
+    position: relative;
+    right: .5rem;
+}
+
+#payment-form .form-control,
+#card-element {
+    color: #000;
+    border: 1px solid #000;
+}
