@@ -9,6 +9,7 @@ def update_on_save(sender, instance, created, *args, **kwargs):
     instance.order.update_total()
 
 @receiver(post_delete, sender=OrderLineItem)
-def update_on_save(sender, instance, created, *args, **kwargs):
+def update_on_delete(sender, instance, *args, **kwargs):
     # Update order total when lineitem deleted
+    print('delete signal received')
     instance.order.update_total()

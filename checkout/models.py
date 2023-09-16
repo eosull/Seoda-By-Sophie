@@ -1,5 +1,7 @@
 import uuid
 
+from decimal import Decimal
+
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
@@ -25,19 +27,24 @@ class Order(models.Model):
 
     def _generate_order_number(self):
         # Generate random order number using UUID
-        uuid.uuid4().hex.upper()
+        return uuid.uuid4().hex.upper()
 
     def update_total(self):
         # Update grand total after each item added
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
-        self.grad_total = self.order_total + self.delivery_cost
+        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        self.delivery_cost = Decimal(settings.STANDARD_DELIVERY)
+        self.grand_total = self.order_total + self.delivery_cost
         self.save()
+        print(f'Order total = {self.order_total}')
+        print(f'Delivery cost = {self.delivery_cost}')
+        print(f'New total = {self.grand_total}')
+        print('Order Updated')
 
     def save(self, *args, **kwargs):
         # Set the order number using UUID generated above
         if not self.order_number:
             self.order_number = self._generate_order_number()
-            super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.order_number
@@ -51,9 +58,8 @@ class OrderLineItem(models.Model):
 
     def save(self, *args, **kwargs):
         # Set the order number using UUID generated above
-        if not self.order_number:
-            self.lineitem_total = self.product.price * self.quantity
-            super().save(*args, **kwargs)
+        self.lineitem_total = self.product.price * self.quantity
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
