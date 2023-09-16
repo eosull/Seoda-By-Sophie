@@ -35,10 +35,6 @@ class Order(models.Model):
         self.delivery_cost = Decimal(settings.STANDARD_DELIVERY)
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
-        print(f'Order total = {self.order_total}')
-        print(f'Delivery cost = {self.delivery_cost}')
-        print(f'New total = {self.grand_total}')
-        print('Order Updated')
 
     def save(self, *args, **kwargs):
         # Set the order number using UUID generated above

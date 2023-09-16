@@ -29,7 +29,6 @@ def adjust_basket(request, product_id):
     # Adjust quantity of product in basket
     quantity = int(request.POST.get('quantity'))
     basket = request.session.get('basket', {})
-    print(quantity)
 
     if quantity > 0:
         basket[product_id] = quantity
