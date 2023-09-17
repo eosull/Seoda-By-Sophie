@@ -64,7 +64,7 @@ header {
     height: 4px;
 }
 
-inpur[name='q']::placeholder {
+input[name='q']::placeholder {
     color: #aab7c4;
 }
 
