@@ -7,6 +7,13 @@
     --black: rgb(0,0,0);
 }
 
+/* Order history table */
+.order-history {
+    max-height: 416px;
+    overflow-y: auto;
+}
+
+/* Profile form styling */
 .profile-form-input .form-control {
     color: var(--black);
 }
