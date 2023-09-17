@@ -64,6 +64,10 @@ header {
     height: 4px;
 }
 
+inpur[name='q']::placeholder {
+    color: #aab7c4;
+}
+
 /* Landing Page Styling */
 .site-button-primary {
     color: var(--black);
@@ -84,6 +88,40 @@ header {
 table {
     --bs-table-bg: var(--pink-white) !important;
 }
+
+/* Allauth form styling */
+.allauth-form-inner-content p {
+    margin-top: 1.5rem;
+    color: #6c757d;
+}
+
+.allauth-form-inner-content input {
+    margin-top: 1rem;
+    border-color: var(--black);
+}
+
+.allauth-form-inner-content .checkboxinput {
+    margin-top: 0.5rem !important;
+    border-color: var(--black);
+}
+
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display:none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aab7c4;
+}
+
+.allauth-form-inner-content a {
+    color: #17a2b8;
+    text-decoration: none;
+}
+
+.allauth-form-inner-content .btn {
+    color: var(--black) !important;
+}
+
 /* Media Queries */
 
 /* Slightly larger container on xl screens */
