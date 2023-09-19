@@ -1,0 +1,1 @@
+web: gunicorn seoda_by_sophie.wsgi:application
