@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io',
-                 'seoda-by-sophie-35b513cfd1a1.herokuapp.com'
+                 'seoda-by-sophie-35b513cfd1a1.herokuapp.com',
                  'localhost',]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io']
