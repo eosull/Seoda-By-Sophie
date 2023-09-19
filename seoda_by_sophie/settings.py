@@ -21,15 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=fj%70gr@&n-jp78bzmeo1)eo!h_8scwydzd7gh+2+p06(=^5w'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io',
-                 'seoda_by_sophie.herokuapp.com',
-                 'localhost',
-]
+                 'seoda-by-sophie-35b513cfd1a1.herokuapp.com'
+                 'localhost',]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io']
 
@@ -104,7 +103,10 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-if 'DEPLOYMENT' in os.environ:
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'seodabysophie@site.com'
+else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_PORT = 587
@@ -112,9 +114,7 @@ if 'DEPLOYMENT' in os.environ:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS', '')
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
     DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER', '')
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'seodabysophie@site.com'
+    
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
