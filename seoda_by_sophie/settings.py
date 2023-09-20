@@ -30,7 +30,8 @@ ALLOWED_HOSTS = ['8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io',
                  'seoda-by-sophie-35b513cfd1a1.herokuapp.com',
                  'localhost',]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io',
+                        'https://seoda-by-sophie-35b513cfd1a1.herokuapp.com/',]
 
 # Application definition
 
