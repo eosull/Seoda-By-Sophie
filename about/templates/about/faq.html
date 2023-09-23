@@ -1,3 +1,7 @@
+<!-- Template for FAQs accordion taken from Bootstrap Docs
+Can be found here:
+https://getbootstrap.com/docs/5.0/components/accordion/ -->
+
 {% extends "base.html" %}
 {% load static %}
 {% load bag_tools %}
@@ -26,7 +30,27 @@
         </div>
         <div class="row">
             <div class="col-10 offset-1 text-center">
-                  
+                {% for category in categories %}
+                    <h4 class="text-muted">{{ category.friendly_name }}</h4>
+                    {% for faq in faq %}
+                        {{ if faq.category == category }}
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button btn collapsed site-button-primary border-blue" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    {{ faq.question }}
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                    <strong>{{ faq.answer }}</strong>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        {{ endif }} 
+                    {% endfor %}
+                  {% endfor %}
             </div>
         </div>
     </div>
