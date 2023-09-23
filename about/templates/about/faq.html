@@ -37,11 +37,11 @@ https://getbootstrap.com/docs/5.0/components/accordion/ -->
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button btn collapsed site-button-primary border-blue" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{faq.id}}" aria-expanded="true" aria-controls="collapseOne">
                                     {{ faq.question }}
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div id="collapse{{faq.id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                     <strong>{{ faq.answer }}</strong>
                                     </div>
