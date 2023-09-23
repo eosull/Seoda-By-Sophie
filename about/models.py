@@ -9,6 +9,7 @@ class InfoCategory(models.Model):
     # Category model for faq and contact submissions
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
+    description = models.TextField(null=False, blank=False, default='Category description')
 
     def __str__(self):
         return self.name
