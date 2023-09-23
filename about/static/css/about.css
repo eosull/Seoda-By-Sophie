@@ -8,5 +8,8 @@
 }
 
 .accordian {
-    background-color: var(--pink-white) !important;
+    
+    --bs-accordion-bg: var(--pink-white) !important;
+    --bs-accordion-active-bg: none !important;
+    --bs-accordion-border-width: 0 !important;
 }
