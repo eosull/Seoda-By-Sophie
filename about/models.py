@@ -23,6 +23,7 @@ class Faq(models.Model):
         verbose_name_plural = 'FAQs'
 
     # Question and answer model for answering FAQs
+    category = models.ForeignKey('InfoCategory', null=True, blank=True, on_delete=models.SET_NULL)
     question = models.TextField(null=False, blank=False)
     answer = models.TextField(null=False, blank=False)
     created = models.DateTimeField(auto_now_add=True)

@@ -4,6 +4,7 @@ from .models import InfoCategory, Faq, Testimonial
 
 class FaqAdmin(admin.ModelAdmin):
     list_display = (
+        'category',
         'question',
         'created',
         'updated',
