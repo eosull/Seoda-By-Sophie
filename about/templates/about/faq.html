@@ -33,7 +33,7 @@ https://getbootstrap.com/docs/5.0/components/accordion/ -->
                 {% for category in categories %}
                     <h4 class="text-muted">{{ category.friendly_name }}</h4>
                     {% for faq in faq %}
-                        {{ if faq.category == category }}
+                        {% if faq.category == category %}
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
@@ -48,7 +48,7 @@ https://getbootstrap.com/docs/5.0/components/accordion/ -->
                                 </div>
                                 </div>
                             </div>
-                        {{ endif }} 
+                        {% endif %} 
                     {% endfor %}
                   {% endfor %}
             </div>
