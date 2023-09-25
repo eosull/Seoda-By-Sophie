@@ -43,9 +43,8 @@ https://getbootstrap.com/docs/5.0/components/accordion/ -->
                                 <div id="collapse{{faq.id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                     {{ faq.answer }}
-                                    <br>
                                     {% if request.user.is_superuser %}
-                                        {% include 'includes/edit_delete_faqs.html' %}
+                                    {% include 'includes/edit_delete_faq.html' %}
                                     {% endif %}
                                     </div>
                                 </div>
@@ -54,9 +53,6 @@ https://getbootstrap.com/docs/5.0/components/accordion/ -->
                         {% endif %} 
                     {% endfor %}
                   {% endfor %}
-                  {% if request.user.is_superuser %}
-                    <a class="btn site-button-primary border-blue" href="{% url 'add_faq' %}">Add new Faq</a>
-                  {% endif %}
             </div>
         </div>
     </div>

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <hr>
+                <h2 class="text-logo mb-4">Content Management</h2>
+                <h5 class="text-muted">Add an Faq</h5>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 text-center">
+                <form method="POST" action="{% url 'add_faq' %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="text-end">
+                        <a class="btn site-button-primary border-blue" href="{% url 'faqs' %}">Cancel</a>
+                        <button class="btn site-button-primary border-blue" type="submit">Add Faq</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% else %}
+{% include 'includes/staff_access.html' %}
+{% endif %}
+{% endblock %}
