@@ -1,1 +1,1 @@
-New contact form message from {{ form_data.name }}
+New contact form message from {{ form_data.name }} - {{ form_data.subject }}
