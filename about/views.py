@@ -35,10 +35,12 @@ def contact(request):
         }
         contact_form = ContactForm(form_data)
         if contact_form.is_valid():
-            # subject = f'New Message {form_data['subject']} from {form_data['name']}'
-            # body = f'{form_data['message']} From {form_data['name']} - {form_data['email']}'
-            subject = 'Testing Email Subject'
-            body = 'Testing Message Sending'
+            subject = render_to_string(
+                'about/contact_emails/contact_email_subject.txt',
+                {'form_data': form_data})
+            body = render_to_string(
+                'about/contact_emails/contact_email_body.txt',
+                {'form_data': form_data, 'contact_email': settings.DEFAULT_FROM_EMAIL})
         
             send_mail(
                 subject,

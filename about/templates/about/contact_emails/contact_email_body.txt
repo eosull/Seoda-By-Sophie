@@ -1,0 +1,3 @@
+New message from {{ form_data.name }} ({{ form_data.email }}):
+
+{{ form_data.message }}
