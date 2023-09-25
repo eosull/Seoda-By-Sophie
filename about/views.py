@@ -37,15 +37,15 @@ def contact(request):
         if contact_form.is_valid():
             # subject = f'New Message {form_data['subject']} from {form_data['name']}'
             # body = f'{form_data['message']} From {form_data['name']} - {form_data['email']}'
-            # subject = 'Testing Email Subject'
-            # body = 'Testing Message Sending'
+            subject = 'Testing Email Subject'
+            body = 'Testing Message Sending'
         
-            # send_mail(
-            #     subject,
-            #     body,
-            #     settings.DEFAULT_FROM_EMAIL,
-            #     [settings.DEFAULT_FROM_EMAIL]
-            # ) 
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                [settings.DEFAULT_FROM_EMAIL]
+            ) 
             messages.success(request, 'Message sent successfully! We will get back to you as soon as we can')
             return redirect(reverse('home'))
         else:
