@@ -37,12 +37,12 @@ https://getbootstrap.com/docs/5.0/components/accordion/ -->
                                 <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{faq.id}}" aria-expanded="true" aria-controls="collapseOne">
-                                    {{ faq.question }}
+                                    <strong>{{ faq.question }}</strong>
                                     </button>
                                 </h2>
                                 <div id="collapse{{faq.id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                    <strong>{{ faq.answer }}</strong>
+                                    {{ faq.answer }}
                                     </div>
                                 </div>
                                 </div>

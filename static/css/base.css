@@ -40,6 +40,10 @@ header {
     cursor : pointer !important;
 }
 
+.bg-pink-light {
+    background-color: var(--pink-light);
+}
+
 /* Header Styling */
 .main-logo-link {
     width: fit-content;

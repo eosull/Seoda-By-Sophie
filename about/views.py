@@ -1,16 +1,24 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import messages
+from django.core.paginator import Paginator
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.conf import settings
 
 from .forms import ContactForm
-from .models import Faq, InfoCategory
+from .models import Faq, InfoCategory, Testimonial
 
 
 def about(request):
     # View returning index page
-    return render(request, 'about/about.html')
+    testimonials = Testimonial.objects.all()
+    paginator = Paginator(testimonials, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'page_obj': page_obj,
+    }
+    return render(request, 'about/about.html', context)
 
 
 def faqs(request):

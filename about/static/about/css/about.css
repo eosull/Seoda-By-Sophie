@@ -7,8 +7,7 @@
     --black: rgb(0,0,0);
 }
 
-.accordian {
-    
+.accordion {
     --bs-accordion-bg: var(--pink-white) !important;
     --bs-accordion-active-bg: none !important;
     --bs-accordion-border-width: 0 !important;
