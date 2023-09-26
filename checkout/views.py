@@ -62,6 +62,10 @@ def checkout(request):
             for product_id, quantity in basket.items():
                 try:
                     product = Product.objects.get(id=product_id)
+                    product.stock_level -= quantity
+                    if product.stock_level == 0:
+                        product.out_of_stock = True
+                    product.save()
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,

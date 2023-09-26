@@ -14,7 +14,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-            <div class="my-5">
+            <div class="card my-5">
                 {% if product.image %}
                     <a href="{{ product.image.url }}" target="_blank">
                         <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -23,6 +23,19 @@
                     <a href="">
                         <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ product.name }}">
                     </a>
+                {% endif %}
+                {% if not product.stock_level %}
+                    <div class="card-img-overlay bg-grey">
+                        <p class="text-white lead">Out of Stock</p>
+                    </div>
+                {% elif product.is_featured or product.is_new or product.stock_level < 3 %}
+                    <div class="card-img-overlay bg-grey">
+                        <p class="text-white">
+                            {% if product.is_featured %}Featured {% endif %}
+                            {% if product.is_new %}New{% endif %}
+                            {% if product.stock_level < 3 %}Low Stock{% endif %}
+                        </p>
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -54,7 +67,7 @@
                                         </button>
                                     </div>
                                     <input type="number" class="form-control qty_input" 
-                                    name="quantity" value="1" min="1" max="5" 
+                                    name="quantity" value="1" min="1" max="5"
                                     data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
                                     <div class="input-group-append">
                                         <button class="increment-qty btn site-button-primary border-blue"
@@ -73,7 +86,11 @@
                             <a href="{% url 'products' %}" class="btn site-button-primary border-blue mt-5">
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
+                            {% if product.out_of_stock %}
+                            <input type="submit" class="btn site-button-primary border-blue mt-5" value="Out Of Stock" disabled readonly>
+                            {% else %}
                             <input type="submit" class="btn site-button-primary border-blue mt-5" value="Add to Basket">
+                            {% endif %}
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </div>

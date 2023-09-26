@@ -5,6 +5,7 @@
     --pink-light: rgb(244,215,236);
     --blue: rgb(215,250,250);
     --black: rgb(0,0,0);
+    --greyed-out: rgba(0, 0, 0, 0.397);
 }
 
 /* Site-Wide Styling */
@@ -98,6 +99,15 @@ input[name='q']::placeholder {
 .landing-content {
     background: url('/media/dev-hero.jpg') no-repeat center center fixed;
     clear: both;
+}
+
+/* Products Styling */
+.card-img-overlay {
+    height: 15%;
+}
+
+.bg-grey {
+    background-color: var(--greyed-out);
 }
 
 /* Table Styling */

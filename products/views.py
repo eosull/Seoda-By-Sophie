@@ -9,7 +9,7 @@ from .forms import ProductForm
 def all_products(request):
     # View returning all products, search and sort queries
 
-    products = Product.objects.all().order_by('-is_new', 'is_featured')
+    products = Product.objects.all()
     query = None
     category = None
     categories = Category.objects.all()

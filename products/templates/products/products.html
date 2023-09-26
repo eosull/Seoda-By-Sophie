@@ -63,16 +63,21 @@
                                 <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ product.name }}">
                             </a>
                             {% endif %}
-                            {% if product.is_featured %}
-                                <!-- <div class="card-img-overlay">
-                                    <p class="text-warning">Featured</p>
-                                </div> -->
+                            
+                            {% if not product.stock_level %}
+                                <div class="card-img-overlay bg-grey">
+                                    <p class="text-white lead">Out of Stock</p>
+                                </div>
+                            {% elif product.is_featured or product.is_new or product.stock_level < 3 %}
+                                <div class="card-img-overlay bg-grey">
+                                    <p class="text-white">
+                                        {% if product.is_featured %}Featured {% endif %}
+                                        {% if product.is_new %}New{% endif %}
+                                        {% if product.stock_level < 3 %}Low Stock{% endif %}
+                                    </p>
+                                </div>
                             {% endif %}
-                            {% if product.is_new %}
-                            <!-- <div class="card-img-overlay">
-                                <p class="text-warning text-end">New</p>
-                            </div> -->
-                            {% endif %}
+
                             <div class="card-body pb-0">
                                 <p class="mb-0">{{ product.name }}</p>
                             </div>
