@@ -13,13 +13,14 @@ def add_to_basket(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+    basket = request.session.get('basket', {})
     if quantity > product.stock_level:
-        print("Not enough stock")
-        messages.success(request, f'Only {product.stock_level} {product.name} remaining, please readjust quantity')
+        if product.stock_level > 0:
+            messages.warning(request, f'Only {product.stock_level} {product.name} remaining, please readjust quantity')
+        else:
+            messages.warning(request, f'{product.name} is out of stock')
         return redirect(redirect_url)
     else:
-        basket = request.session.get('basket', {})
-
         if product_id in list(basket.keys()):
             basket[product_id] += quantity
         else:
