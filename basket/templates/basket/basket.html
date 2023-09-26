@@ -51,7 +51,12 @@
                                             <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                         </td>
                                         <td class="py-3">
-                                            <p class="my-0">€{{ item.product.price }}</p>
+                                            {% if item.product.on_sale %}
+                                                <del class="my-0 d-inline">€{{ item.product.price }}</del>
+                                                <p class="my-0 d-inline">€{{ item.product.sale_price }}</p>
+                                            {% else %}
+                                                <p class="my-0">€{{ item.product.price }}</p>
+                                            {% endif %}
                                         </td>
                                         <td class="py-3 w-25">
                                             <form class="update-form" method="POST" action="{% url 'adjust_basket' item.product_id %}">
@@ -80,7 +85,11 @@
                                             <a class="remove-item text-danger float-end" id="remove_{{ item.product_id }}"><small>Remove</small></a>
                                         </td>
                                         <td class="py-3">
+                                            {% if item.product.on_sale %}
+                                            <p class="my-0">€{{ item.product.sale_price | calc_subtotal:item.quantity }}</p>
+                                            {% else %}
                                             <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                            {% endif %}
                                         </td>
                                     </tr>
                                 {% endfor %}

@@ -23,9 +23,7 @@
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="offersMenuLink">
                     <li><a href="{% url 'products' %}?sort=is_new&direction=desc" class="dropdown-item">New In</a></li>
-                    <!-- <li><a href="#" class="dropdown-item">Last Chance</a></li>
-                    <li><a href="#" class="dropdown-item">Special Offers</a></li> -->
-                    <li><a href="{% url 'products' %}?sort=is_featured&direction=desc" class="dropdown-item">Featured</a></li>
+                    <li><a href="{% url 'products' %}?sort=on_sale&direction=desc" class="dropdown-item">On sale</a></li>
                   </ul>
             </div>
         </li>

@@ -95,8 +95,9 @@
                             <div class="card-footer pt-0 text-left">
                                 <div class="row">
                                     <div class="col">
-                                        {% if on_sale %}
-                                            <p class="lead mb-0 text-left font-weight-bold">€{{ product.sale_price }}</p>
+                                        {% if product.on_sale %}
+                                            <del class="mb-0 text-left font-weight-bold d-inline">€{{ product.price }}</del>
+                                            <p class="lead mb-0 text-left font-weight-bold d-inline">€{{ product.sale_price }}</p>
                                         {% else %}
                                             <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
                                         {% endif %}
