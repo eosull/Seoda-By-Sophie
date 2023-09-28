@@ -85,6 +85,11 @@ input[name='q']::placeholder {
     color: #aab7c4;
 }
 
+/* Footer Styling */
+#mc_embed_signup {
+    background: var(--pink-white);
+    width: 400px;}
+
 /* Landing Page Styling */
 .site-button-primary {
     color: var(--black);
