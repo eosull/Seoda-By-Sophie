@@ -173,3 +173,10 @@ table {
         z-index: 1030;
     }
 }
+
+/* Fixed size of product card on small screens */
+@media (max-width: 575px) {
+    .card-img-top-preview {
+        height: 75vw;
+    }
+}

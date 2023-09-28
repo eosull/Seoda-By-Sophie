@@ -52,60 +52,60 @@
             </div>
             <div class="row">
                 {% for product in products %}
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 my-3">
-                        <div class="card h-100 border-0 shadow-sm bg-pink-light">
-                            {% if product.image %}
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top-preview img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                            </a>
-                            {% else %}
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top-preview img-fluid" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ product.name }}">
-                            </a>
-                            {% endif %}
-                            
-                            {% if not product.stock_level %}
-                                <div class="card-img-overlay bg-grey">
-                                    <p class="text-white lead">Out of Stock</p>
-                                </div>
-                            {% elif product.is_featured or product.is_new or product.stock_level < 3 %}
-                                <div class="card-img-overlay bg-grey">
-                                    <p class="text-white">
-                                        {% if product.is_featured %}Featured {% endif %}
-                                        {% if product.is_new %}New{% endif %}
-                                        {% if product.stock_level < 3 %}Low Stock{% endif %}
-                                    </p>
-                                </div>
-                            {% endif %}
-
-                            <div class="card-body pb-0">
-                                <p class="mb-0">{{ product.name }}</p>
-                            </div>
-                            {% if product.category %}
-
-                            <p class="small mt-1 mb-0">
-                                <a class="text-muted nav-link" href="{% url 'products' %}?category={{ product.category.name }}">
-                                    {{ product.category.friendly_name }}
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 my-3 product-card">
+                            <div class="card h-100 border-0 shadow-sm bg-pink-light">
+                                {% if product.image %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top-preview img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
-                            </p>
-                            {% if request.user.is_superuser %}
-                                {% include 'includes/edit_delete_products.html' %}
-                            {% endif %}
-                            {% endif %}
-                            <div class="card-footer pt-0 text-left">
-                                <div class="row">
-                                    <div class="col">
-                                        {% if product.on_sale %}
-                                            <del class="mb-0 text-left font-weight-bold d-inline">€{{ product.price }}</del>
-                                            <p class="lead mb-0 text-left font-weight-bold d-inline">€{{ product.sale_price }}</p>
-                                        {% else %}
-                                            <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
-                                        {% endif %}
+                                {% else %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top-preview img-fluid" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ product.name }}">
+                                </a>
+                                {% endif %}
+                                
+                                {% if not product.stock_level %}
+                                    <div class="card-img-overlay bg-grey">
+                                        <p class="text-white lead">Out of Stock</p>
+                                    </div>
+                                {% elif product.is_featured or product.is_new or product.stock_level < 3 %}
+                                    <div class="card-img-overlay bg-grey">
+                                        <p class="text-white">
+                                            {% if product.is_featured %}Featured {% endif %}
+                                            {% if product.is_new %}New{% endif %}
+                                            {% if product.stock_level < 3 %}Low Stock{% endif %}
+                                        </p>
+                                    </div>
+                                {% endif %}
+
+                                <div class="card-body pb-0">
+                                    <p class="mb-0">{{ product.name }}</p>
+                                </div>
+                                {% if product.category %}
+
+                                <p class="small mt-1 mb-0">
+                                    <a class="d-none d-md-block text-muted nav-link" href="{% url 'products' %}?category={{ product.category.name }}">
+                                        {{ product.category.friendly_name }}
+                                    </a>
+                                </p>
+                                {% if request.user.is_superuser %}
+                                    {% include 'includes/edit_delete_products.html' %}
+                                {% endif %}
+                                {% endif %}
+                                <div class="card-footer pt-0 text-left">
+                                    <div class="row">
+                                        <div class="col">
+                                            {% if product.on_sale %}
+                                                <del class="mb-0 text-left font-weight-bold d-inline">€{{ product.price }}</del>
+                                                <p class="lead mb-0 text-left font-weight-bold d-inline">€{{ product.sale_price }}</p>
+                                            {% else %}
+                                                <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 {% endfor %}
             </div>
         </div>
