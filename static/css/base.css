@@ -18,7 +18,7 @@ html {
 
 body {
     background-color: var(--pink-white);
-    height: calc(100vh - 124px);
+    min-height: calc(100vh - 124px);
     color: var(--black);
     font-family: 'Quicksand', sans-serif;
 }
@@ -123,6 +123,17 @@ input[name='q']::placeholder {
     background-color: var(--blue-light);
     color: black;
     border-color: var(--blue);
+}
+
+.site-button-secondary {
+    color: var(--black);
+    background-color: var(--pink-dark);
+}
+
+.site-button-secondary:hover {
+    background-color: var(--pink-light);
+    color: black;
+    border-color: var(--pink-light);
 }
 
 .landing-button {

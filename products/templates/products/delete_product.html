@@ -18,8 +18,8 @@
             <hr>
             <h2 class="text-logo mb-4">Confirm Delete</h2>
             <h5 class="text-muted">Are you sure you want to delete product <em>{{ product.name }}</em></h5>
-            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-            <a class="btn site-button-primary border-blue" href="{% url 'product_detail' product.id %}">Cancel</a>
+            <a class="btn site-button-secondary" href="{% url 'delete_product' product.id %}">Delete</a>
+            <a class="btn site-button-primary" href="{% url 'product_detail' product.id %}">Cancel</a>
             <hr>
         </div>
     </div>
