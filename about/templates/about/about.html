@@ -45,12 +45,12 @@ https://getbootstrap.com/docs/4.0/components/pagination/ -->
       <p class="lead">What our customers Say</p>
       <div class="row">
         {% for tes in page_obj %}
-        <div class="col-sm-6 col-md-4 my-3">
-          <div class="card bg-pink-light">
-            {% if product.image %}
-            <img class="card-img-top" src="{{ tes.product.image.url }}" alt="{{ tes.product }}">
+        <div class="col-sm-6 col-md-4 my-3 product-card">
+          <div class="card h-100 border-0 shadow-sm bg-pink-light">
+            {% if tes.product.image %}
+            <img class="card-img-top-preview" src="{{ tes.product.image.url }}" alt="{{ tes.product }}">
             {% else %}
-            <img class="card-img-top" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ tes.product }}">
+            <img class="card-img-top-preview" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ tes.product }}">
             {% endif %}
             <div class="card-body">
               <h5 class="card-title">{{ tes.customer }}</h5>
