@@ -184,4 +184,12 @@ table {
     .card-img-top-preview {
         height: 75vw;
     }
+
+}
+
+/* Smaller mailchimp input on x-small screens */
+@media (max-width: 400px) {
+
+    #mc_embed_signup {
+        width: 300px;}
 }
