@@ -39,9 +39,9 @@
 </li>
 
 <li class="list-inline-item">
-    <a class="{% if grand_total %} text-info font-weight-bold{% else %}{% endif %} nav-link d-block d-lg-none" href="{% url 'view_basket' %}">
+    <a class="{% if grand_total %} text-info font-weight-bold{% else %}{% endif %} nav-link basket-link d-block d-lg-none" href="{% url 'view_basket' %}">
         <div class="text-center">
-            <div>Basket</div>
+            <div><i class="bi bi-basket"></i></div>
             <p class="my-0">
                 {% if grand_total %}
                     €{{ grand_total|floatformat:2 }}

@@ -3,8 +3,8 @@
     --pink-white: rgb(255, 247, 257);
     --pink-dark: rgb(255, 214, 214);
     --pink-light: rgb(244, 215, 236);
-    --blue: rgb(215, 250, 250);
-    --blue-light: rgba(215, 250, 250, 0.637);
+    --blue-light: rgba(215, 250, 250, 0.881);
+    --blue: rgb(178, 250, 250);
     --black: rgb(0, 0, 0);
     --greyed-out: rgba(0, 0, 0, 0.397);
 }
@@ -18,6 +18,7 @@ body {
     background-color: var(--pink-white);
     height: calc(100vh - 124px);
     color: var(--black);
+    font-family: 'Quicksand', sans-serif;
 }
 
 header {
@@ -27,6 +28,7 @@ header {
 
 .text-logo {
     text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
 }
 
 .border-blue {
@@ -99,6 +101,10 @@ input[name='q']::placeholder {
     background-color: transparent;
 }
 
+.basket-link:hover {
+    color: var(--blue);
+}
+
 /* Footer Styling */
 #mc_embed_signup {
     background: var(--pink-white);
@@ -108,10 +114,11 @@ input[name='q']::placeholder {
 /* Landing Page Styling */
 .site-button-primary {
     color: var(--black);
+    background-color: var(--blue);
 }
 
 .site-button-primary:hover {
-    background-color: var(--blue);
+    background-color: var(--blue-light);
     color: black;
     border-color: var(--blue);
 }
