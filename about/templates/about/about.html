@@ -6,86 +6,88 @@ https://getbootstrap.com/docs/4.0/components/pagination/ -->
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'about/css/about.css' %}">
+<link rel="stylesheet" href="{% static 'about/css/about.css' %}">
 {% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col">
-            </div>
-        </div>
+<div class="container header-container">
+  <div class="row">
+    <div class="col">
     </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col text-center mt-3">
-                <hr>
-                <h2 class="text-logo">About</h2>
-                <hr class="w-25 mx-auto">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-10 offset-1 text-center">
-                <p class="lead">About Us</p>
-                <p>Seoda By Sophie is an Irish producer of small batch hand-made resin earrings. Starting in Limerick in 2020,
-                   our products have been on sale in boutiques and markets around the city as well as
-                   on online retailers. With the launch of our own website in 2023 we are delighted to be able
-                   to offer our customers our unique products directly.
-                </p>
-                <br>
-                <p>All of our earrings are crafted in small quantities using locally sourced materials.
-                   Unfortunately, due to this once a batch are gone they are gone. 
-                   However, if there is a particular pair you really like that are sold out feel free to 
-                   <a href="#">get in touch</a> and we can see if there is anything we can do.
-                </p>
-                <hr class="w-25 mx-auto">
-                <p class="lead">What our customers Say</p>
-                <div class="row">
-                    {% for tes in page_obj %}
-                    <div class="col-sm-6 col-md-4 my-3">
-                      <div class="card bg-pink-light">
-                        {% if product.image %}
-                            <img class="card-img-top" src="{{ tes.product.image.url }}" alt="{{ tes.product }}">
-                        {% else %}
-                            <img class="card-img-top" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ tes.product }}">
-                        {% endif %}
-                        <div class="card-body">
-                          <h5 class="card-title">{{ tes.customer }}</h5>
-                          <a class="nav-link text-decoration-underline" href="{% url 'product_detail' tes.product.id %}">{{ tes.product.name }}</a>
-                          <p class="card-text fst-italic">{{ tes.testimonial }}</p>
-                        </div>
-                      </div>
-                    </div>   
-                    {% endfor %}
-                    </div>
-                  <nav aria-label="Testimonial navigation">
-                    <ul class="pagination justify-content-center">
-                      {% if page_obj.has_previous %}
-                      <li class="page-item">
-                        <a class="btn site-button-primary border-blue" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      {% endif %}
-                      {% if page_obj.has_next %}
-                      <li class="page-item">
-                        <a class="btn site-button-primary border-blue" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
-                      {% endif %}
-                    </ul>
-                  </nav>
-                <hr class="w-25 mx-auto">
-                <p>
-                    Got any Questions? Check out our <a href="{% url 'faqs' %}" class="d-inline">FAQs</a> or feel free
-                    to get in touch <a href="#" class="d-inline">here</a>
-                </p>    
-            </div>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-3">
+      <hr>
+      <h2 class="text-logo">About</h2>
+      <hr class="w-25 mx-auto">
     </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1 text-center">
+      <p class="lead">About Us</p>
+      <p>Seoda By Sophie is an Irish producer of small batch hand-made resin earrings. Starting in Limerick in 2020,
+        our products have been on sale in boutiques and markets around the city as well as
+        on online retailers. With the launch of our own website in 2023 we are delighted to be able
+        to offer our customers our unique products directly.
+      </p>
+      <br>
+      <p>All of our earrings are crafted in small quantities using locally sourced materials.
+        Unfortunately, due to this once a batch are gone they are gone.
+        However, if there is a particular pair you really like that are sold out feel free to
+        <a href="#">get in touch</a> and we can see if there is anything we can do.
+      </p>
+      <hr class="w-25 mx-auto">
+      <p class="lead">What our customers Say</p>
+      <div class="row">
+        {% for tes in page_obj %}
+        <div class="col-sm-6 col-md-4 my-3">
+          <div class="card bg-pink-light">
+            {% if product.image %}
+            <img class="card-img-top" src="{{ tes.product.image.url }}" alt="{{ tes.product }}">
+            {% else %}
+            <img class="card-img-top" src="{{ MEDIA_URL }}no-image-found.jpg" alt="{{ tes.product }}">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ tes.customer }}</h5>
+              <a class="nav-link text-decoration-underline"
+                href="{% url 'product_detail' tes.product.id %}">{{ tes.product.name }}</a>
+              <p class="card-text fst-italic">{{ tes.testimonial }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <nav aria-label="Testimonial navigation">
+        <ul class="pagination justify-content-center">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="btn site-button-primary border-blue" href="?page={{ page_obj.previous_page_number }}"
+              aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          {% endif %}
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="btn site-button-primary border-blue" href="?page={{ page_obj.next_page_number }}"
+              aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+      <hr class="w-25 mx-auto">
+      <p>
+        Got any Questions? Check out our <a href="{% url 'faqs' %}" class="d-inline">FAQs</a> or feel free
+        to get in touch <a href="#" class="d-inline">here</a>
+      </p>
+    </div>
+  </div>
+</div>
 {% endblock %}
-
