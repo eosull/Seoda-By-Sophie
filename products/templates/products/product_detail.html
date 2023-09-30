@@ -91,7 +91,7 @@
                             <a href="{% url 'products' %}" class="btn site-button-primary border-blue mt-5">
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            {% if product.out_of_stock %}
+                            {% if product.stock_level == 0 %}
                             <input type="submit" class="btn site-button-primary border-blue mt-5" value="Out Of Stock" disabled readonly>
                             {% else %}
                             <input type="submit" class="btn site-button-primary border-blue mt-5" value="Add to Basket">
