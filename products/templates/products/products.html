@@ -77,10 +77,10 @@
                         <div class="card-img-overlay bg-grey">
                             <p class="text-white lead">Out of Stock</p>
                         </div>
-                        {% elif product.stock_level < 3 %}
+                        {% elif product.stock_level < 4 %}
                         <div class="card-img-overlay bg-grey">
                             <p class="text-white">
-                                {% if product.stock_level < 3 %}Low Stock{% endif %}
+                                {% if product.stock_level < 4 %}Low Stock{% endif %}
                             </p>
                         </div>
                         {% endif %}
