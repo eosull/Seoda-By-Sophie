@@ -13,7 +13,6 @@ class ProductAdmin(admin.ModelAdmin):
         'sale_price',
         'image',
         'is_new',
-        'is_featured',
         'stock_level'
     )
 

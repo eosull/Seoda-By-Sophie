@@ -25,7 +25,6 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True)
     on_sale = models.BooleanField(default=False, null=True, blank=True)
     is_new = models.BooleanField(default=False, null=True, blank=True)
-    is_featured = models.BooleanField(default=False, null=True, blank=True)
     stock_level = models.IntegerField(default=0, null=True, blank=True)
 
     def __str__(self):

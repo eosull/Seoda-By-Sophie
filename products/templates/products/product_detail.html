@@ -28,11 +28,9 @@
                     <div class="card-img-overlay bg-grey">
                         <p class="text-white lead">Out of Stock</p>
                     </div>
-                {% elif product.is_featured or product.is_new or product.stock_level < 3 %}
+                {% elif product.stock_level < 3 %}
                     <div class="card-img-overlay bg-grey">
                         <p class="text-white">
-                            {% if product.is_featured %}Featured {% endif %}
-                            {% if product.is_new %}New{% endif %}
                             {% if product.stock_level < 3 %}Low Stock{% endif %}
                         </p>
                     </div>
