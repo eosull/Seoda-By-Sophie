@@ -42,8 +42,7 @@ https://getbootstrap.com/docs/5.0/components/accordion/ -->
                                 </h2>
                                 <div id="collapse{{faq.id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                    {{ faq.answer }}
-                                    <br>
+                                    {{ faq.answer }} 
                                     {% if request.user.is_superuser %}
                                         {% include 'includes/edit_delete_faqs.html' %}
                                     {% endif %}

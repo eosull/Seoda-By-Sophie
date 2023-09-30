@@ -25,6 +25,8 @@ def add_to_basket(request, product_id):
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     basket = request.session.get('basket', {})
+    basket_quan = 0
+    comb_quan = 0
 
     if product_id in list(basket.keys()):
         basket_quan = basket[product_id]
