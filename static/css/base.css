@@ -1,10 +1,10 @@
 /* Colour variables */
 :root {
-    --pink-white: rgb(255,247,257);
-    --pink-dark: rgb(255,214,214);
-    --pink-light: rgb(244,215,236);
-    --blue: rgb(215,250,250);
-    --black: rgb(0,0,0);
+    --pink-white: rgb(255, 247, 257);
+    --pink-dark: rgb(255, 214, 214);
+    --pink-light: rgb(244, 215, 236);
+    --blue: rgb(215, 250, 250);
+    --black: rgb(0, 0, 0);
     --greyed-out: rgba(0, 0, 0, 0.397);
 }
 
@@ -38,11 +38,15 @@ header {
 
 .update-link,
 .remove-item {
-    cursor : pointer !important;
+    cursor: pointer !important;
 }
 
 .bg-pink-light {
     background-color: var(--pink-light);
+}
+
+.bg-pink-white {
+    background-color: var(--pink-white);
 }
 
 .stripe-style-input {
@@ -55,7 +59,7 @@ header {
     box-shadow: 0 1px 3px 0 #e6ebf1;
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
-  }
+}
 
 /* Header Styling */
 .main-logo-link {
@@ -88,7 +92,8 @@ input[name='q']::placeholder {
 /* Footer Styling */
 #mc_embed_signup {
     background: var(--pink-white);
-    width: 400px;}
+    width: 400px;
+}
 
 /* Landing Page Styling */
 .site-button-primary {
@@ -143,7 +148,7 @@ table {
 }
 
 .allauth-form-inner-content label:not([for='id_remember']) {
-    display:none;
+    display: none;
 }
 
 .allauth-form-inner-content input::placeholder {
@@ -159,15 +164,31 @@ table {
     color: var(--black) !important;
 }
 
+/* Product Form styling */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
 /* Media Queries */
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
     .container {
-      max-width: 80%;
+        max-width: 80%;
     }
-  }
-  
+}
+
 /* Fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     .fixed-top-desktop-only {
@@ -191,5 +212,6 @@ table {
 @media (max-width: 400px) {
 
     #mc_embed_signup {
-        width: 300px;}
+        width: 300px;
+    }
 }
