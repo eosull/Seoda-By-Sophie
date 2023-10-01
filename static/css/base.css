@@ -225,15 +225,15 @@ table {
 
 /* Media Queries */
 
-/* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
+    /* Slightly larger container on xl screens */
     .container {
         max-width: 80%;
     }
 }
 
-/* Fixed top navbar only on medium and up */
 @media (min-width: 992px) {
+    /* Fixed top navbar only on medium and up */
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
@@ -243,35 +243,35 @@ table {
     }
 }
 
-/* Center dropdown nav on small screens */
 @media (max-width: 992px) {
+    /* Center dropdown nav on small screens */
     .navbar {
         width: 100%;
     }
 }
 
-/* Image container on Basket Preview page */
 @media (max-width: 767px) {
+    /* Image container on Basket Preview page */
     .basket-image {
         width: auto !important;
     }
 }
 
-/* Fixed size of product card on small screens */
 @media (max-width: 575px) {
+    /* Fixed size of product card on small screens */
     .card-img-top-preview {
         height: 75vw;
     }
 
+    /* Increase size of quantity selectors on basket page */
     .basket-update-inputs {
         width: 50% !important;
     }
 
 }
 
-/* Smaller mailchimp input on x-small screens */
 @media (max-width: 400px) {
-
+    /* Smaller mailchimp input on x-small screens */
     #mc_embed_signup {
         width: 300px;
     }

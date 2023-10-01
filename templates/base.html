@@ -1,3 +1,5 @@
+<!-- Base Template -->
+
 {% load static %}
 
 <!doctype html>
@@ -6,6 +8,7 @@
 <head>
 
   {% block meta %}
+  <!-- Meta info including desc and keywords for SEO -->
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,6 +41,7 @@
   {% endblock %}
 
   {% block corejs %}
+  <!-- Loading Bootstrap and Jquery -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
   </script>
@@ -52,6 +56,7 @@
 </head>
 
 <body>
+  <!-- Header incl title, search, profile & basket -->
   <header class="container-fluid fixed-top">
     <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
@@ -120,6 +125,7 @@
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- Include main and mobile navs -->
         {% include 'includes/mobile-top-header.html' %}
         {% include 'includes/main-nav.html' %}
       </nav>
@@ -127,6 +133,7 @@
   </header>
 
   {% if messages %}
+  <!-- Hidden div for display of messages -->
   <div class="message-container">
     {% for message in messages %}
     {% with message.level as level %}
@@ -159,6 +166,7 @@
   {% endblock %}
 
   <div class="container-fluid">
+    <!-- Footer -->
     <footer class="d-flex flex-md-row flex-column justify-content-center align-items-center py-3 mb-4 border-top">
       <div class="col-xs-12 col-lg-3 text-center">
         <span class="mb-3 mb-md-0 text-muted">&copy; 2023 Seoda By Sophie</span>
@@ -189,8 +197,8 @@
               </div>
               <div class="optionalParent">
                 <div class="clear foot">
-                  <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn site-button-primary border-blue"
-                    value="Subscribe">
+                  <input type="submit" name="subscribe" id="mc-embedded-subscribe"
+                    class="btn site-button-primary border-blue" value="Subscribe">
                   <p style="margin: 0px auto;"><a href="http://eepurl.com/iAHpu-"
                       title="Mailchimp - email marketing made easy and fun"><span
                         style="display: inline-block; background-color: transparent; border-radius: 4px;"><img
@@ -226,6 +234,7 @@
         </script>
       </div>
 
+      <!-- Social Media Links -->
       <div class="col-xs-12 col-lg-3 d-flex justify-content-center">
         <ul class="nav list-unstyled">
           <li class="ms-3"><a class="text-muted" target="_blank" rel="noopener"

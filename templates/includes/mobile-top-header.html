@@ -1,3 +1,6 @@
+<!-- Mobile site navbar -->
+
+<!-- Search dropdown option -->
 <li class="list-inline-item dropdown">
     <div class="dropdown d-block d-lg-none">
         <a href="#" class="nav-link" role="button" id="mobile-search" data-bs-toggle="dropdown" aria-expanded="false">
@@ -18,6 +21,7 @@
     </div>
 </li>
 
+<!-- Account dropdown option -->
 <li class="list-inline-item dropdown">
     <div class="dropdown d-block d-lg-none">
         <a href="#" class="nav-link" role="button" id="user-options" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,6 +42,7 @@
     </div>
 </li>
 
+<!-- Basket preview -->
 <li class="list-inline-item">
     <a class="{% if grand_total %} text-info font-weight-bold{% else %}{% endif %} nav-link basket-link d-block d-lg-none" href="{% url 'view_basket' %}">
         <div class="text-center">

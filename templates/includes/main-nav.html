@@ -1,43 +1,53 @@
+<!-- Main navbar template -->
+
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid d-block">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
+        <!-- Nav dropdown for products -->
         <li class="nav-item dropdown">
-            <div class="dropdown d-block text-center">
-                <a href="#" class="nav-link dropdown-toggle" role="button" id="productMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Products
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="productMenuLink">
-                    <li><a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">Price Low to High</a></li>
-                    <li><a href="{% url 'products' %}?sort=price&direction=desc" class="dropdown-item">Price High to Low</a></li>
-                    <li><a href="{% url 'products' %}" class="dropdown-item">All Products</a></li>
-                  </ul>
-            </div>
+          <div class="dropdown d-block text-center">
+            <a href="#" class="nav-link dropdown-toggle" role="button" id="productMenuLink" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="productMenuLink">
+              <li><a href="{% url 'products' %}?sort=price&direction=asc" class="dropdown-item">Price Low to High</a>
+              </li>
+              <li><a href="{% url 'products' %}?sort=price&direction=desc" class="dropdown-item">Price High to Low</a>
+              </li>
+              <li><a href="{% url 'products' %}" class="dropdown-item">All Products</a></li>
+            </ul>
+          </div>
         </li>
+        <!-- Nav dropdown for Offers -->
         <li class="nav-item dropdown">
-            <div class="dropdown text-center">
-                <a href="#" class="nav-link dropdown-toggle" role="button" id="offersMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Special Offers
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="offersMenuLink">
-                    <li><a href="{% url 'products' %}?sort=is_new&direction=desc" class="dropdown-item">New In</a></li>
-                    <li><a href="{% url 'products' %}?sort=on_sale&direction=desc" class="dropdown-item">On sale</a></li>
-                  </ul>
-            </div>
+          <div class="dropdown text-center">
+            <a href="#" class="nav-link dropdown-toggle" role="button" id="offersMenuLink" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Special Offers
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="offersMenuLink">
+              <li><a href="{% url 'products' %}?sort=is_new&direction=desc" class="dropdown-item">New In</a></li>
+              <li><a href="{% url 'products' %}?sort=on_sale&direction=desc" class="dropdown-item">On sale</a></li>
+            </ul>
+          </div>
         </li>
+        <!-- Nav dropdown for Info -->
         <li class="nav-item dropdown">
-            <div class="dropdown text-center">
-                <a href="#" class="nav-link dropdown-toggle" role="button" id="aboutMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Info
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="aboutMenuLink">
-                    <li><a href="{% url 'faqs' %}" class="dropdown-item">FAQs</a></li>
-                    <li><a href="{% url 'contact' %}" class="dropdown-item">Contact</a></li>
-                    <li><a href="{% url 'about' %}" class="dropdown-item">About us</a></li>
-                  </ul>
-            </div>
+          <div class="dropdown text-center">
+            <a href="#" class="nav-link dropdown-toggle" role="button" id="aboutMenuLink" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Info
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="aboutMenuLink">
+              <li><a href="{% url 'faqs' %}" class="dropdown-item">FAQs</a></li>
+              <li><a href="{% url 'contact' %}" class="dropdown-item">Contact</a></li>
+              <li><a href="{% url 'about' %}" class="dropdown-item">About us</a></li>
+            </ul>
+          </div>
         </li>
-    </ul>
+      </ul>
     </div>
   </div>
 </nav>
