@@ -16,7 +16,7 @@ class ProductForm(forms.ModelForm):
                              widget=CustomClearableFileInput)
 
     # Add custom styling including autofocus on name, * symbol on required
-    # fields excluding country field and assigning placeholders/style classes
+    # fields and assigning placeholders/style classes
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()

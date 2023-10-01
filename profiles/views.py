@@ -1,3 +1,5 @@
+# Profile views
+
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 
@@ -7,7 +9,7 @@ from checkout.models import Order
 
 
 def profile(request):
-    # Display user's profile
+    # Display user's profile, update info if valid form submitted
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
@@ -29,6 +31,7 @@ def profile(request):
     return render(request, template, context)
 
 
+# Get users order history
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 

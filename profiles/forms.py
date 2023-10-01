@@ -1,3 +1,5 @@
+# User profile information form
+
 from django import forms
 from .models import UserProfile
 
@@ -19,13 +21,16 @@ class UserProfileForm(forms.ModelForm):
             'default_county': 'County/State',
         }
 
+        # Add custom styling including autofocus on name, * symbol on required
+        # fields excluding country field and assigning placeholders/styling
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            if field != 'default_country': 
+            if field != 'default_country':
                 if self.fields[field].required:
                     placeholder = f'{placeholders[field]} *'
                 else:
                     placeholder = placeholders[field]
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'profile-form-input py-2 my-2'
+            self.fields[field].widget.attrs['class'] = 'profile-form-input\
+                 py-2 my-2'
             self.fields[field].label = False
