@@ -31,7 +31,7 @@
                             <tr>
                                 <th scope="col">Info</th>
                                 <th scope="col"></th>
-                                <th scope="col">Price</th>
+                                <th scope="col" class="d-none d-sm-block">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
                             </tr>
@@ -39,7 +39,7 @@
 
                         {% for item in basket_items %}
                         <tr>
-                            <td class="p-3 w-25">
+                            <td class="p-3 w-25 basket-image">
                                 {% if item.product.image %}
                                 <img class="img-fluid rounded" src="{{ item.product.image.url }}"
                                     alt="{{ item.product.name }}">
@@ -52,7 +52,7 @@
                                 <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                                 <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                             </td>
-                            <td class="py-3">
+                            <td class="py-3 d-none d-sm-block" >
                                 {% if item.product.on_sale %}
                                 <del class="my-0 d-inline">€{{ item.product.price }}</del>
                                 <p class="my-0 d-inline">€{{ item.product.sale_price }}</p>
@@ -60,7 +60,7 @@
                                 <p class="my-0">€{{ item.product.price }}</p>
                                 {% endif %}
                             </td>
-                            <td class="py-3 w-25">
+                            <td class="py-3 w-25 basket-update-inputs">
                                 <form class="update-form" method="POST"
                                     action="{% url 'adjust_basket' item.product_id %}">
                                     {% csrf_token %}
@@ -86,8 +86,8 @@
                                         </div>
                                     </div>
                                 </form>
-                                <a class="update-link text-info"><small>Update</small></a>
-                                <a class="remove-item text-danger float-end"
+                                <a class="update-link btn site-button-primary p-1 mt-1"><small>Update</small></a>
+                                <a class="remove-item btn site-button-secondary p-1 mt-1"
                                     id="remove_{{ item.product_id }}"><small>Remove</small></a>
                             </td>
                             <td class="py-3">

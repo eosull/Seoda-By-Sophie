@@ -250,10 +250,21 @@ table {
     }
 }
 
+/* Image container on Basket Preview page */
+@media (max-width: 767px) {
+    .basket-image {
+        width: auto !important;
+    }
+}
+
 /* Fixed size of product card on small screens */
 @media (max-width: 575px) {
     .card-img-top-preview {
         height: 75vw;
+    }
+
+    .basket-update-inputs {
+        width: 50% !important;
     }
 
 }
