@@ -1,3 +1,5 @@
+<!-- Display products in basket with summary of order -->
+
 {% extends "base.html" %}
 {% load static %}
 {% load bag_tools %}
@@ -21,6 +23,7 @@
         </div>
     </div>
 
+    <!-- Table with items in basket -->
     <div class="row">
         <div class="col text-center mt-3">
             {% if basket_items %}
@@ -37,6 +40,7 @@
                             </tr>
                         </thead>
 
+                        <!-- Looping through basket displaying relevant product information in table -->
                         {% for item in basket_items %}
                         <tr>
                             <td class="p-3 w-25 basket-image">
@@ -52,7 +56,7 @@
                                 <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                                 <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                             </td>
-                            <td class="py-3 d-none d-sm-block" >
+                            <td class="py-3 d-none d-sm-block">
                                 {% if item.product.on_sale %}
                                 <del class="my-0 d-inline">€{{ item.product.price }}</del>
                                 <p class="my-0 d-inline">€{{ item.product.sale_price }}</p>
@@ -61,6 +65,7 @@
                                 {% endif %}
                             </td>
                             <td class="py-3 w-25 basket-update-inputs">
+                                <!-- Form to update quantity of product in basket -->
                                 <form class="update-form" method="POST"
                                     action="{% url 'adjust_basket' item.product_id %}">
                                     {% csrf_token %}
@@ -91,6 +96,7 @@
                                     id="remove_{{ item.product_id }}"><small>Remove</small></a>
                             </td>
                             <td class="py-3">
+                                <!-- Calculate Product totals -->
                                 {% if item.product.on_sale %}
                                 <p class="my-0">€{{ item.product.sale_price | calc_subtotal:item.quantity }}</p>
                                 {% else %}
@@ -101,6 +107,7 @@
                         {% endfor %}
                         <tr>
                             <td colspan="5" class="pt-5 text-end">
+                                <!-- Display Total including delivery -->
                                 <h6><strong>Basket Total: €{{ total|floatformat:2 }}</strong></h6>
                                 <h6><strong>Delivery: €{{ delivery|floatformat:2 }}</strong></h6>
                                 <h4 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>

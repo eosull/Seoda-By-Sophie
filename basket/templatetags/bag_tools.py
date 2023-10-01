@@ -1,3 +1,5 @@
+# Bag tools to calculate price totals in template
+
 from django import template
 
 

@@ -1,5 +1,9 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+# Views for basket app
+from django.shortcuts import render, redirect, reverse
+from django.shortcuts import HttpResponse, get_object_or_404
+
 from django.contrib import messages
+
 from products.models import Product
 
 
@@ -8,16 +12,19 @@ def view_basket(request):
     return render(request, 'basket/basket.html')
 
 
-def check_basket(comb_quan, basket_quan, request_quan, product, redirect_url, request):
+def check_basket(comb_quan, basket_quan, request_quan, product,
+                 redirect_url, request):
     # Check stock and quantity in basket
+    # Returns warning if product out of stock/low in stock
     if comb_quan > product.stock_level:
         if product.stock_level - basket_quan == 0:
             messages.warning(request, f'{product.name} is out of stock')
             return redirect(redirect_url)
         else:
-            messages.warning(request, f'Only {product.stock_level-basket_quan} more {product.name} remaining, please readjust quantity')
+            messages.warning(request, f'Only {product.stock_level-basket_quan}\
+                 more {product.name} remaining, please readjust quantity')
             return redirect(redirect_url)
-        
+
 
 def add_to_basket(request, product_id):
     # Add specified quantity of product to basket
@@ -28,6 +35,9 @@ def add_to_basket(request, product_id):
     basket_quan = 0
     comb_quan = 0
 
+    # Using check_basket function stock level is checked
+    # and if quantity desired is available it is added to
+    # basket
     if product_id in list(basket.keys()):
         basket_quan = basket[product_id]
         comb_quan = quantity + basket_quan
@@ -35,14 +45,16 @@ def add_to_basket(request, product_id):
         comb_quan = quantity
 
     if comb_quan > product.stock_level:
-        check_basket(comb_quan, basket_quan, quantity, product, redirect_url, request)    
+        check_basket(comb_quan, basket_quan, quantity,
+                     product, redirect_url, request)
     else:
         if product_id in list(basket.keys()):
             basket[product_id] += quantity
         else:
             basket[product_id] = quantity
 
-        messages.success(request, f'{product.name} added successfully to basket')
+        messages.success(request, f'{product.name} added successfully\
+                         to basket')
 
     request.session['basket'] = basket
     return redirect(redirect_url)
@@ -56,11 +68,14 @@ def adjust_basket(request, product_id):
     basket = request.session.get('basket', {})
 
     basket_quan = basket[product_id]
-    comb_quan = quantity + basket_quan 
+    comb_quan = quantity + basket_quan
 
+    # Using check_basket function stock level is checked
+    # and if quantity desired is available basket is 
+    # updated
     if quantity > product.stock_level:
-        check_basket(comb_quan, basket_quan, quantity, product, 'view_basket', request) 
-
+        check_basket(comb_quan, basket_quan, quantity,
+                     product, 'view_basket', request)
     else:
         if quantity > 0:
             basket[product_id] = quantity
