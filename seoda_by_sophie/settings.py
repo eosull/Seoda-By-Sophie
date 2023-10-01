@@ -26,13 +26,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io',
-                 '8000-eosull-seodabysophie-2a63x8mbs65.ws-eu105.gitpod.io',
-                 'seoda-by-sophie-35b513cfd1a1.herokuapp.com',
-                 'localhost',]
+ALLOWED_HOSTS = ['seoda-by-sophie-35b513cfd1a1.herokuapp.com',]
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-eosull-seodabysophie-2a63x8mbs65.ws-eu104.gitpod.io',
-                        'https://seoda-by-sophie-35b513cfd1a1.herokuapp.com/',]
+CSRF_TRUSTED_ORIGINS = ['https://seoda-by-sophie-35b513cfd1a1.herokuapp.com/',]
 
 # Application definition
 
@@ -115,7 +111,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS', '')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER', '')
-    
+
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -142,8 +138,6 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-
-
 
 
 # Password validation
