@@ -1,3 +1,5 @@
+<!-- About page, including business info, testimonials and links to faqs/contact page -->
+
 <!-- Pagination using bootstrap pagination components
 Found here:
 https://getbootstrap.com/docs/4.0/components/pagination/ -->
@@ -20,6 +22,7 @@ https://getbootstrap.com/docs/4.0/components/pagination/ -->
 
 {% block content %}
 <div class="container">
+  <!-- About the business -->
   <div class="row">
     <div class="col text-center mt-3">
       <hr>
@@ -42,6 +45,7 @@ https://getbootstrap.com/docs/4.0/components/pagination/ -->
         <a href="{% url 'contact' %}">get in touch</a> and we can see if there is anything we can do.
       </p>
       <hr class="w-25 mx-auto">
+      <!-- Testimonials -->
       <p class="lead">What our customers Say</p>
       <div class="row">
         {% for tes in page_obj %}
@@ -83,6 +87,7 @@ https://getbootstrap.com/docs/4.0/components/pagination/ -->
         </ul>
       </nav>
       <hr class="w-25 mx-auto">
+      <!-- Links to Faq and contact page -->
       <p>
         Got any Questions? Check out our <a href="{% url 'faqs' %}" class="d-inline">FAQs</a> or feel free
         to get in touch <a href="{% url 'contact' %}" class="d-inline">here</a>

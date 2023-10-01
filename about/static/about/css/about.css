@@ -1,12 +1,13 @@
 /* Colour variables */
 :root {
-    --pink-white: rgb(255,247,257);
-    --pink-dark: rgb(255,214,214);
-    --pink-light: rgb(244,215,236);
-    --blue: rgb(215,250,250);
-    --black: rgb(0,0,0);
+    --pink-white: rgb(255, 247, 257);
+    --pink-dark: rgb(255, 214, 214);
+    --pink-light: rgb(244, 215, 236);
+    --blue: rgb(215, 250, 250);
+    --black: rgb(0, 0, 0);
 }
 
+/* Faqs accordian styling */
 .accordion {
     --bs-accordion-bg: var(--pink-white) !important;
     --bs-accordion-active-bg: none !important;

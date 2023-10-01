@@ -1,3 +1,5 @@
+<!-- Edit Faq page -->
+
 {% extends "base.html" %}
 {% load static %}
 
@@ -11,6 +13,7 @@
 
 {% block content %}
 {% if request.user.is_superuser %}
+<!-- Loads product info in Faq form and allows admin to update -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">

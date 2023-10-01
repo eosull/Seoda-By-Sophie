@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+# Views for about app
+
+from django.shortcuts import render, redirect, reverse
+from django.shortcuts import HttpResponse, get_object_or_404
 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -36,9 +39,12 @@ def faqs(request):
 
     return render(request, 'about/faq.html', context)
 
+
 @login_required
 def add_faq(request):
-    # Add an faq
+    # Add an faq, @login_required decorater restricts access to logged in users
+    # If logged in user not superuser they are informed of restriction and 
+    # redirected home
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the site admin can do that')
         return redirect(reverse('home'))
@@ -50,7 +56,8 @@ def add_faq(request):
             messages.success(request, 'Successfully added Faq!')
             return redirect(reverse('faqs'))
         else:
-            messages.error(request, 'Failed to add faq. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add faq. \
+                Please ensure the form is valid.')
     else:
         form = FaqForm()
 
@@ -64,7 +71,9 @@ def add_faq(request):
 
 @login_required
 def edit_faq(request, faq_id):
-    # Edit an faq
+    # Edit an faq, @login_required decorater restricts access to logged in
+    # users. If logged in user not superuser they are informed of
+    # restriction and redirected home
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the site admin can do that')
         return redirect(reverse('home'))
@@ -74,10 +83,12 @@ def edit_faq(request, faq_id):
         form = FaqForm(request.POST, request.FILES, instance=faq)
         if form.is_valid:
             form.save()
-            messages.success(request, f'Successfully edited question {faq.question}')
+            messages.success(request, f'Successfully edited question\
+                 {faq.question}')
             return redirect(reverse('faqs'))
         else:
-            messages.error(request, 'Failed to update faq, please check form for errors')
+            messages.error(request, 'Failed to update faq, please check\
+                 form for errors')
     form = FaqForm(instance=faq)
     messages.info(request, f'You are editing question {faq.question}')
 
@@ -92,7 +103,9 @@ def edit_faq(request, faq_id):
 
 @login_required
 def confirm_faq_delete(request, faq_id):
-    # Confirm delete
+    # Confirm deletion of faq, @login_required decorater restricts access to
+    # logged inusers. If logged in user not superuser they are informed of
+    # restriction and redirected home
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the site admin can do that')
         return redirect(reverse('home'))
@@ -108,11 +121,13 @@ def confirm_faq_delete(request, faq_id):
 
 @login_required
 def delete_faq(request, faq_id):
-    # Delete an Faq
+    # Delete an faq, @login_required decorater restricts access to
+    # logged inusers. If logged in user not superuser they are informed of
+    # restriction and redirected home
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the site admin can do that')
         return redirect(reverse('home'))
-        
+
     faq = get_object_or_404(Faq, pk=faq_id)
     faq.delete()
     messages.success(request, 'Faq deleted')
@@ -129,27 +144,30 @@ def contact(request):
             'message': request.POST['message'],
         }
         contact_form = ContactForm(form_data)
+        # If form valid use email templates with form data to send an email
+        # using django send_mail method to site account containing message
         if contact_form.is_valid():
             subject = render_to_string(
                 'about/contact_emails/contact_email_subject.txt',
                 {'form_data': form_data})
             body = render_to_string(
                 'about/contact_emails/contact_email_body.txt',
-                {'form_data': form_data, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+                {'form_data': form_data,
+                 'contact_email': settings.DEFAULT_FROM_EMAIL})
             send_mail(
                 subject,
                 body,
                 settings.DEFAULT_FROM_EMAIL,
                 [settings.DEFAULT_FROM_EMAIL]
-            ) 
-            messages.success(request, 'Message sent successfully! We will get back to you as soon as we can')
+            )
+            messages.success(request, 'Message sent successfully! We will get\
+                 back to you as soon as we can')
             return redirect(reverse('home'))
         else:
             messages.error(request, "Please check your form information")
     else:
         contact_form = ContactForm()
-    
+
     template = 'about/contact.html'
     context = {
         'contact_form': contact_form,
