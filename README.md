@@ -1,10 +1,14 @@
 # Seoda By Sophie
 
-| ![Screen Size Responsiveness](/assets/readme_images/) |
+| ![Screen Size Responsiveness](/assets/readme_images/responsive_screens.png) |
 |:--:|
 |Seoda By Sophie|
 
-**Seoda By Sophie** is an online retailer...
+**Seoda By Sophie** is an retailer of hand-made resin earrings based in Limerick, Ireland. With this website the business aims to move from selling on third-party stores and begin to offer their products to customers directly.
+
+The website makes use of the high quality content already produced by the active social media presence of the business and adds extras to create an engaging experience from start to finish for customers.
+
+When making purchases, a card number of 4242 4242 4242 4242 with expiry date 04/24 and security code 242 can be used to test checkout functionality.
 
 The live site can be found [here](https://seoda-by-sophie-35b513cfd1a1.herokuapp.com/)
 
@@ -20,60 +24,66 @@ The live site can be found [here](https://seoda-by-sophie-35b513cfd1a1.herokuapp
 - [Credits](#credits)
 
 # Features
+
+Here is a brief overview of the site features, it is recommended to explore the site to get a better idea of the experience.
+
 ## Navigation
 
-| ![Image format](/assets/readme_images/navbar_unauthorised) |
+| ![Main Nav](/assets/readme_images/nav_main.png) |
 |:--:|
-|Image Format|
+|Main Navbar|
+
+| ![Mobile Nav](/assets/readme_images/nav-mobile.png) |
+|:--:|
+|Mobile Navbar|
+
+## Footer
+
+| ![Footer](/assets/readme_images/footer.png) |
+|:--:|
+|Footer including copyright, newsletter signup and social media links|
 
 ## Landing Page
-Landing page summary
 
-| ![Image format](/assets/readme_images/navbar_unauthorised) |
+| ![Landing Page](/assets/readme_images/landing_page.png) |
 |:--:|
-|Image Format|
+|Landing page including link to all products page|
 
-## Products
-Product page summary
+## All Products
 
-| ![Image format](/assets/readme_images/navbar_unauthorised) |
+| ![Products Page](/assets/readme_images/products_page.png) |
 |:--:|
-|Image Format|
+|All products page including links to product, product info and filtering tools|
 
 ## Product Details
 
-| ![Image format](/assets/readme_images/navbar_unauthorised) |
+| ![Product Details](/assets/readme_images/product_detail.png) |
 |:--:|
-|Image Format|
+|Product Details including image, product info and link to add to basket. Links also present for admin to edit or delete products.|
 
 ## Basket
 
-| ![Image format](/assets/readme_images/navbar_unauthorised) |
+| ![Basket](/assets/readme_images/basket.png) |
 |:--:|
-|Image Format|
+|Basket including product summary, price breakdown and controls to adjust order|
 
 ## Checkout
 
-| ![Image format](/assets/readme_images/navbar_unauthorised) |
+| ![Checkout](/assets/readme_images/checkout.png) |
 |:--:|
-|Image Format|
+|Checkout including order summary, shipping form and stripe payment integration|
 
 ## About
 
-| ![Image format](/assets/readme_images/navbar_unauthorised) |
+| ![About](/assets/readme_images/about.png) |
 |:--:|
-|Image Format|
+|About page with info on business and testimonials|
 
-## Account Registration/Login
-Users can register and login to access features only accesible to authorised users using front-end forms, shown below.
+## FAQs
 
-| ![Login Page](/assets/readme_images/signin_page.png) |
+| ![FAQs](/assets/readme_images/faqs.png) |
 |:--:|
-|Login Page|
-
-| ![Register Page](/assets/readme_images/signup_page.png) |
-|:--:|
-|Register Page|
+|FAQs page with questions and answers|
 
 # Design
 The design process was structured using the five planes of UX - **Strategy, Scope, Structure, Skeleton & Surface**. Each Section is discussed more in depth in the Design document in the repository, which can be found [here](DESIGN.md). A summary will be outlined below.
@@ -88,32 +98,29 @@ The colour palette (seen below) ...
 |Colour Palette|
 
 # Agile Implementation
-An Agile methodology was used in the development of this site, structuring and scheduling the workflow.
+An Agile methodology was used in the development of this site, structuring and scheduling the workflow. Work was broken into sprints with the MVP being the completion of outlined user stories. These were categorised as 'must have' or 'should have' in order to efficiently allocate time to the project.
 
-Agile Outline
+The implementation of this process can be seen clearly on my [GitHub project board](https://github.com/users/eosull/projects/8).
 
-The implementation of this process can be seen clearly on my [GitHub project board](https://github.com/users/eosull/projects/8). Below is the details of User Stories and Sprints from the project, clicking on Epic or Sprint titles will bring you to the associated page on GitHub to see info in more detail.
-
-## User Stories
-Google Doc with user storys and links to GitHub:
-https://docs.google.com/spreadsheets/d/1cLw34TLgnHsWQUCyxNQNolB0Wog3KuQlkmCOjkjQZpg/edit?usp=sharing
+User stories were tracked using a google sheet containing links to Github project, epics and issues where further info such as milestones, labels and priorities can be seen:
+[User Story Tracking](https://docs.google.com/spreadsheets/d/1cLw34TLgnHsWQUCyxNQNolB0Wog3KuQlkmCOjkjQZpg/edit?usp=sharing)
 
 ## Sprints
 
-### Sprint 1 () - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/2)
-This sprint consisted of 
+### Sprint 1 - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/2)
+This sprint consisted of project setup, authentication, base template and products setup.
 
-### Sprint 2 () - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/3)
-This sprint consisted of 
+### Sprint 2 - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/3)
+This sprint consisted of the creation of basket functionality and addition of feature for site admin to edit content on site
 
-### Sprint 3 () - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/4)
-This Sprint covered 
+### Sprint 3 - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/4)
+This Sprint covered the completion of CRUD functionality for site admin as well as the implementation of a secure checkout process using Stripe and a full user profile app.
 
-### Sprint 4 () - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/5)
-This sprint covered 
+### Sprint 4 - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/5)
+This sprint covered the completion of MVP tasks for the site including contact forms, newsletter, custom FAQs site SEO and deployment.
 
-### Final Sprint () - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/6)
-This sprint covered
+### Final Sprint - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/6)
+This sprint covered the final project submission for CI PP5 E-Commerce Project
 
 # Marketing
 Seoda By Sophie is a small business run by one individual and the goal is to turn a hobby into a profit-making enterprise. As a result the web marketing strategies chosen are free and low-cost/targeted expense. The main strands of this campaign are:
