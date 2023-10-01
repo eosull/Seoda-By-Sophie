@@ -1,25 +1,28 @@
+<!-- Landing Page template -->
+
 {% extends "base.html" %}
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container pt-2">
-        <div class="row">
-            <div class="col">
-            </div>
+<div class="container header-container pt-2">
+    <div class="row">
+        <div class="col">
         </div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid landing-content">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col text-center my-3">
-                <div class="my-5">
-                    <h2>
-                        <a class="btn landing-button btn-outline-primary border-blue site-button-primary btn-lg text-logo py-3" href="{% url 'products' %}">Shop Unique Earrings Now</a>
-                    </h2>
-                </div>
+<div class="container-fluid landing-content">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col text-center my-3">
+            <div class="my-5">
+                <h2>
+                    <a class="btn landing-button btn-outline-primary border-blue site-button-primary btn-lg text-logo py-3"
+                        href="{% url 'products' %}">Shop Unique Earrings Now</a>
+                </h2>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

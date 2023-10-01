@@ -1,3 +1,4 @@
+# Landing page url
 from django.urls import path
 from . import views
 
