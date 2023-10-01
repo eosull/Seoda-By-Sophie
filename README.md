@@ -189,14 +189,59 @@ Testing was completed throughout the development of the site as can be seen in t
 
 # Deployment
 
+**Database (ElephantSQL) Setup**
+1. Create New Instance for project with free Tiny Turtle plan
+2. Select EU-West-1 (Ireland) Data Centre
+3. URL from instance summary to be used in Heroku configs
+
+**AWS Setup**
+1. Create new bucket
+2. Choose closest available server (EU-West)
+3. Enable ACLs for object ownership setting with bucket owner preferred
+4. Uncheck block all public access
+5. Enable static website hosting in properties
+6. Copy following code into CORs configuration:
+	[ { "AllowedHeaders": [ "Authorization" ], "AllowedMethods": [ "GET" ], "AllowedOrigins": [ "*" ], "ExposeHeaders": [] } ]
+7. Generate policy statement using generator and add to settings
+8. Add list permissions for everyone
+9. IAM:
+	  - User groups
+	  - Create new manage-seoda-by-sophie group
+	  - Create policy for all s3 access using bucket arn
+	  - Attach policy to created group
+	  - Create new user
+	  - Add user to group
+	  - Download user credentials as csv
+10. User credentials to be used in Heroku configs
+
+**IDE Setup**
+1. Install dj_database_url and psycopg2 to connect to database
+2. Import dj_database_url and os in settings.py file
+3. Set ElephantSQL url as default database in settings.py
+4. Migrate database models to new database
+5. Create new superuser
+6. Delete ElephantSQL url from settings
+7. Add if statement in settings so app uses ElephantSQL url if url in heroku settings
+8. Install Gunicorn to act as webserver
+9. Add Procfile at base directory
+10. Add heroku hostname to ALLOWED_HOSTS in settings.py
+11. Update settings.py to take secret key from heroku vars
+12. Install boto3 and django-storages. Add storages to installed apps
+13. Add bucket name, server region and secret key (from heroku vars) to settings
+14. Add S3 domain name for storage of static files
+15. Add custom_storages.py file
+16. Add staticfile and media file storage settings
+17. Add media and static urls
+
 **Heroku Deployment**
 1. Create Heroku App
-2. Create database (I used Elephant SQl)
-3. Configure Cloudinary for media and static hosting
-4. Link database/cloudinary to app in Heroku config vars
-5. Add Django secret key to Heroku config vars
-6. Link Heroku to GitHub Repository
-7. Set up Automatic deployments or make manual deployments
+2. In ‘settings’ tab add config var DATABASE_URL with value of ElephantSQL URL
+3. Add Disable_collectstatic=1 to config var for initial deploy
+4. Generate new secret key and add to config vars
+5. Add AWS keys to config vars
+6. Add USE_AWS set to true to config vars
+7. Remove Disable_collectstatic var for deployment
+8. Link Heroku app to GitHub repository and set automatic deployment up
 
 **Forking**
 1. Navigate to the [GitHub Repository](https://github.com/eosull/Seoda-by-sophie) and click 'fork' in the top right of the page
