@@ -185,7 +185,7 @@ A newsletter was implemented in the footer of the site using Mailchimp. This giv
 - [Code Institute Student Template](https://github.com/Code-Institute-Org/gitpod-full-template): Template for repository
 
 # Testing
-Testing was completed throughout the development of the site as can be seen in the [Testing](TESTING.md) file. This included manual tests for functionality, accessibility, code validation and site goals.
+Testing was completed throughout the development of the site as can be seen in the [Testing](TESTING.md) file.
 
 # Deployment
 
@@ -255,6 +255,7 @@ Testing was completed throughout the development of the site as can be seen in t
 # Credits
 
 ## Code/Resource References
+- Reference for [CI E-commerce site walkthrough](https://github.com/Code-Institute-Solutions/boutique_ado_v1/tree/933797d5e14d6c3f072df31adf0ca6f938d02218) completed in preparation for this project, this Seoda By Sophie site builds on the structures and logic used on that project
 - Commit messages formatted based on [Conventional Commit Standards](https://www.conventionalcommits.org/en/v1.0.0/#summary) - useful cheatsheet for formatting these messages by Github user Zekfad [Here](https://gist.github.com/Zekfad/f51cb06ac76e2457f11c80ed705c95a3)
 - Creation of Entity Relationship Diagram was completed using LucidChart resources [Youtube tutorial](https://www.youtube.com/watch?v=QpdhBUYk7Kk&ab_channel=LucidSoftware) and [associated article](https://www.lucidchart.com/pages/how-to-draw-ERD).
 
