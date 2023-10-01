@@ -86,14 +86,11 @@ Here is a brief overview of the site features, it is recommended to explore the 
 |FAQs page with questions and answers|
 
 # Design
-The design process was structured using the five planes of UX - **Strategy, Scope, Structure, Skeleton & Surface**. Each Section is discussed more in depth in the Design document in the repository, which can be found [here](DESIGN.md). A summary will be outlined below.
+The design process was structured using the five planes of UX - **Strategy, Scope, Structure, Skeleton & Surface**. Each Section is discussed more in depth in the Design document in the repository, which can be found [here](DESIGN.md).
 
-From brainstorming sessions and using design thinking a central site goal emerged:
--  **Site Goal**.
+The colour palette was based on existing business logos seen on the current [Etsy shop](https://www.etsy.com/ie/shop/SeodabySophie) and outlined below
 
-The colour palette (seen below) ...
-
-| ![Final Color Palette](/assets/readme_images/color_palette_final.png) |
+| ![Final Color Palette](/assets/readme_images/color_palette.png) |
 |:--:|
 |Colour Palette|
 
@@ -106,6 +103,8 @@ User stories were tracked using a google sheet containing links to Github projec
 [User Story Tracking](https://docs.google.com/spreadsheets/d/1cLw34TLgnHsWQUCyxNQNolB0Wog3KuQlkmCOjkjQZpg/edit?usp=sharing)
 
 ## Sprints
+
+Sprints are outlined below, follow GitHub link for each for more in depth information.
 
 ### Sprint 1 - [GitHub Link](https://github.com/eosull/Seoda-By-Sophie/milestone/2)
 This sprint consisted of project setup, authentication, base template and products setup.
