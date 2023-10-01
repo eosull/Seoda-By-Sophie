@@ -1,7 +1,12 @@
+# Views for product app
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
 from django.db.models import Q
+
 from .models import Product, Category
 from .forms import ProductForm
 
@@ -18,36 +23,34 @@ def all_products(request):
     direction = None
 
     if request.GET:
-
+        # Managing sorting GET request
+        # Generating sortkey and ordering products
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
             if sortkey == 'name':
                 sortkey = 'lower_name'
                 products = products.annotate(lower_name=Lower('name'))
-
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
-
+        # Sorting products by category
         if 'category' in request.GET:
             sel_category = request.GET['category'].split(',')
             products = products.filter(category__name__in=sel_category)
             sel_category = Category.objects.filter(name__in=sel_category)
-
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messsages.error(request, "No search query entered!")
                 return redirect(reverse('products'))
-            
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
     current_sorting = f'{sort}_{direction}'
-    
+
     context = {
         'products': products,
         'search_term': query,
@@ -73,11 +76,12 @@ def product_detail(request, product_id):
 
 @login_required
 def add_product(request):
-    # Add a product to the store
+    # Add a product to the store, accessible for admins only
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the site admin can do that')
         return redirect(reverse('home'))
 
+    # If valid form submitted, save product and direct to detail page
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -85,7 +89,8 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add product.\
+                 Please ensure the form is valid.')
     else:
         form = ProductForm()
 
@@ -99,11 +104,12 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_id):
-    # Edit a product
+    # Edit a product, accessible for admins only
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the site admin can do that')
         return redirect(reverse('home'))
 
+    # If valid form submitted, save product and direct to detail page
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES, instance=product)
@@ -112,7 +118,8 @@ def edit_product(request, product_id):
             messages.success(request, f'Successfully edited {product.name}')
             return redirect(reverse('product_detail', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product, please check form for errors')
+            messages.error(request, 'Failed to update product,\
+                 please check form for errors')
     form = ProductForm(instance=product)
     messages.info(request, f'You are editing {product.name}')
 
@@ -127,7 +134,7 @@ def edit_product(request, product_id):
 
 @login_required
 def confirm_delete(request, product_id):
-    # Confirm delete
+    # Confirm delete, accessible for admins only
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the site admin can do that')
         return redirect(reverse('home'))
@@ -143,11 +150,11 @@ def confirm_delete(request, product_id):
 
 @login_required
 def delete_product(request, product_id):
-    # Delete a product
+    # Delete a product, accessible for admins only
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only the site admin can do that')
         return redirect(reverse('home'))
-        
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, 'Product deleted')

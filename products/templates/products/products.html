@@ -1,3 +1,5 @@
+<!-- All products template -->
+
 {% extends "base.html" %}
 {% load static %}
 
@@ -20,6 +22,7 @@
                 <span>All Products</span>
             </a>
 
+            <!-- Populate links to filter products -->
             {% for cat in categories %}
             <a class="text-decoration-none border-blue btn site-button-primary"
                 href="{% url 'products' %}?category={{ cat.name }}">
@@ -35,6 +38,7 @@
             <div class="row mt-1 mb-2">
                 <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                     <div class="sort-select-wrapper w-50">
+                        <!-- Select to filter by price -->
                         <select id="sort-selector"
                             class="custom-select custom-select-sm border-0 border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                             <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>All
@@ -46,6 +50,7 @@
                         </select>
                     </div>
                 </div>
+                <!-- Return the search result numbers -->
                 <div class="col-12 col-md-6 order-md-first">
                     <p class="text-muted mt-3 text-center text-md-left">
                         {% if search_term or current_categories or current_sorting != 'None_None' %}
@@ -58,6 +63,7 @@
                 </div>
             </div>
             <div class="row">
+                <!-- Populate page with cards containing all products with info -->
                 {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 my-3 product-card">
                     <div class="card h-100 border-0 shadow-sm bg-pink-light">
@@ -128,6 +134,7 @@
 {% endblock %}
 
 
+<!-- JS script for back-to-top link and sorting selector -->
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">

@@ -1,3 +1,5 @@
+# Product forms
+
 from django import forms
 from .models import Product, Category
 from .widgets import CustomClearableFileInput
@@ -6,11 +8,15 @@ from .widgets import CustomClearableFileInput
 class ProductForm(forms.ModelForm):
 
     class Meta:
+        # Inherit fields from product model
         model = Product
         fields = '__all__'
-    
-    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
 
+    image = forms.ImageField(label='Image', required=False,
+                             widget=CustomClearableFileInput)
+
+    # Add custom styling including autofocus on name, * symbol on required
+    # fields excluding country field and assigning placeholders/style classes
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()

@@ -1,60 +1,66 @@
+<!-- Product edit template -->
+
 {% extends "base.html" %}
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
+<!-- Form populated with product info for admin to edit info -->
 {% if request.user.is_superuser %}
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <hr>
-                <h2 class="text-logo mb-4">Product Management</h2>
-                <h5 class="text-muted">Edit Product</h5>
-                <hr>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                    {% endfor %}
-                    <div class="text-end">
-                        <a class="btn site-button-primary border-blue" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn site-button-primary border-blue" type="submit">Update</button>
-                    </div>
-                </form>
-            </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <hr>
+            <h2 class="text-logo mb-4">Product Management</h2>
+            <h5 class="text-muted">Edit Product</h5>
+            <hr>
         </div>
     </div>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- Render image field using custom styling -->
+                {% for field in form %}
+                {% if field.name != 'image' %}
+                {{ field | as_crispy_field }}
+                {% else %}
+                {{ field }}
+                {% endif %}
+                {% endfor %}
+                <div class="text-end">
+                    <a class="btn site-button-primary border-blue" href="{% url 'products' %}">Cancel</a>
+                    <button class="btn site-button-primary border-blue" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% else %}
 {% include 'includes/staff_access.html' %}
 {% endif %}
 {% endblock %}
 
+<!-- JS script to preview image file name before upload -->
 {% block postloadjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
-            $('#filename').text(`Image will be set to: ${file.name}`);
-        });
-    </script>
+{{ block.super }}
+<script type="text/javascript">
+    $('#new-image').change(function () {
+        var file = $('#new-image')[0].files[0];
+        $('#filename').text(`Image will be set to: ${file.name}`);
+    });
+</script>
 {% endblock %}

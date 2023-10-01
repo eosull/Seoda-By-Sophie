@@ -1,3 +1,5 @@
+<!-- Script to add or subtract quantity of prroduct to add to basket -->
+
 <script type="text/javascript">
     function handleEnableDisable(itemId) {
         var currentValue = parseInt($(`#id_qty_${itemId}`).val());
@@ -6,22 +8,22 @@
         $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
         $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
     }
-    
+
     // Proper enable/disable of inputs on page load
     var allQtyInputs = $('.qty_input');
-    for(var i = 0; i < allQtyInputs.length; i++){
+    for (var i = 0; i < allQtyInputs.length; i++) {
         var itemId = $(allQtyInputs[i]).data('item_id');
         handleEnableDisable(itemId);
     }
 
     // Check enable/disable on page load
-    $('qty-input').change(function() {
+    $('qty-input').change(function () {
         var itemId = $(this).data('item_id');
         handleEnableDisable(itemId);
     })
 
     // Increment Quantity
-    $('.increment-qty').click(function(e) {
+    $('.increment-qty').click(function (e) {
         e.preventDefault();
         var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentVal = parseInt($(closestInput).val());
@@ -31,7 +33,7 @@
     });
 
     // Decrement Quantity
-    $('.decrement-qty').click(function(e) {
+    $('.decrement-qty').click(function (e) {
         e.preventDefault();
         var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentVal = parseInt($(closestInput).val());
