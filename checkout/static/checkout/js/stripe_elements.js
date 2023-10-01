@@ -1,7 +1,15 @@
+// Stripe Elements JS code
+// Docs for Stripe payment integration available
+// https://stripe.com/docs/payments/
+
+
+// Setting vars needed for card payment
+// Connecting to stripe using keys and creatng new stripe instance
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
+// Creating new card instance with style rules
 var style = {
     base: {
         color: '#000',
@@ -17,7 +25,9 @@ var style = {
         iconColor: '#dc3545'
     }
 };
-var card = elements.create('card', {style: style});
+var card = elements.create('card', {
+    style: style
+});
 card.mount('#card-element');
 
 // Card error handling
@@ -36,9 +46,11 @@ card.addEventListener('change', function (event) {
 // Form submission handling
 var form = document.getElementById('payment-form');
 
-form.addEventListener('submit', function(ev) {
+form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    card.update({ 'disabled': true});
+    card.update({
+        'disabled': true
+    });
     $('#submit-button').attr('disabled', true);
 
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
@@ -50,7 +62,8 @@ form.addEventListener('submit', function(ev) {
     };
     var url = '/checkout/cache_checkout_data/';
 
-    $.post(url, postData).done(function() {
+    // Submitting form data
+    $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -79,22 +92,26 @@ form.addEventListener('submit', function(ev) {
                     state: $.trim(form.county.value),
                 }
             },
-        }).then(function(result) {
+        }).then(function (result) {
+            // Inform user of errors
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
                     <span>${result.error.message}</span>`;
                 $(errorDiv).html(html);
-                card.update({ 'disabled': false});
+                card.update({
+                    'disabled': false
+                });
                 $('#submit-button').attr('disabled', false);
             } else {
+                // Submit form if payment successful
                 if (result.paymentIntent.status === 'succeeded') {
                     form.submit();
                 }
             }
         });
     }).fail(function () {
-        // Reload page
+        // Reload page if payment failed
         location.reload();
     })
 });

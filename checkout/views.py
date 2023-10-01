@@ -1,6 +1,10 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+# Views for checkout app
+from django.shortcuts import render, redirect, reverse
+from django.shortcuts import get_object_or_404, HttpResponse
+
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
+
 from django.contrib import messages
 from django.conf import settings
 
@@ -10,6 +14,7 @@ from profiles.forms import UserProfileForm
 from .models import OrderLineItem, Order
 from profiles.models import UserProfile
 from products.models import Product
+
 from basket.contexts import basket_contents
 
 import stripe
@@ -19,6 +24,7 @@ import os
 
 @require_POST
 def cache_checkout_data(request):
+    # Cache data submitted at checkout else return error
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -38,7 +44,9 @@ def checkout(request):
     stripe_public_key = os.environ.get('STRIPE_PUBLIC_KEY')
     stripe_secret_key = os.environ.get('STRIPE_SECRET_KEY')
 
+    # Submitting a checkout Post request
     if request.method == 'POST':
+        # Getting basket & form info from Post request
         basket = request.session.get('basket', {})
 
         form_data = {
@@ -54,6 +62,7 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            # If form is valid check order and process
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
@@ -72,17 +81,22 @@ def checkout(request):
                     order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your basket wasn't found in our database.")
+                        "One of the products in your basket wasn't found\
+                             in our database.")
                     )
                     order.delete()
                     return redirect(reverse('view_basket'))
 
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                            args=[order.order_number]))
         else:
+            # Otherwise return error message
             messages.error(request, "Please check your form information")
-    
+
+    # Getting the checkout page
     else:
+        # Getting basket contents & setting stripe variables
         basket = request.session.get('basket', {})
         if not basket:
             messages.error(request, 'There is nothing currently in your basket')
@@ -97,6 +111,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
+        # Populate form if user has account
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -140,6 +155,7 @@ def checkout_success(request, order_number):
         order.save()
 
     if save_info:
+        # Save order info to users profile if 'save info' box checked
         profile_data = {
             'default_phone_number': order.phone_number,
             'default_country': order.country,
@@ -153,10 +169,11 @@ def checkout_success(request, order_number):
         if user_profile_form.is_valid():
             user_profile_form.save()
 
+    # Checkout success message and clearing basket
     messages.success(request, f'Order Successfully Processed \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}')
-    
+
     if 'basket' in request.session:
         del request.session['basket']
 

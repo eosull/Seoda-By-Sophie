@@ -1,3 +1,5 @@
+<!-- Checkout template with order summary and form -->
+
 {% extends "base.html" %}
 {% load static %}
 {% load bag_tools %}
@@ -26,6 +28,7 @@
         </div>
 
         <div class="row">
+            <!-- Order summary -->
             <div class="col-12 col-lg-6 order-lg-last mb-5">
                 <p class="text-muted">Order Summary ({{ product_count }})</p>
                 <div class="row">
@@ -36,6 +39,8 @@
                         <p class="mb-1.mt-0.small.text-muted">Subtotal</p>
                     </div>
                 </div>
+                <!-- Loop through items in basket and display info on each
+                and calculate totals -->
                 {% for item in basket_items %}
                     <div class="row">
                         <div class="col-2 mb-1">
@@ -71,6 +76,7 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6">
+                <!-- Crispy form to submit shipping info -->
                 <p>Please fill out the form to complete your purchase</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
@@ -90,6 +96,7 @@
                         {{ order_form.phone_number | as_crispy_field }}
                         <div class="form-check form-check-inline float-end mr-0">
                             {% if user.is_authenticated %}
+                            <!-- Option to save info to account or create an account -->
                                 <label for="id-save-info" class="form-check-label">Save this info to my profile</label>
                                 <input type="checkbox" class="form-check-input ml-2 mr-0" id="id-save-info" name="save-info" checked>
                             {% else %}
@@ -100,6 +107,7 @@
                             {% endif %}
                         </div>
                     </fieldset>
+                    <!-- Stripe payment element -->
                     <fieldset class="px-3">
                         <legend class="fieldset-label small px-2 w-auto">Payment</legend>
                         <div class="mb-3" id="card-element"></div>
@@ -107,6 +115,7 @@
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
 
+                    <!-- Form submission/link back to basket -->
                     <div class="submit-button text-end mt-5 mb-2">
                         <a href="{% url 'view_basket' %}" class="btn site-primary-button border-blue">
                             <span class="font-weight-bold">Adjust Bag</span>
@@ -124,6 +133,7 @@
     </div>
 {% endblock %}
 
+<!-- Loading Stripe keys and script -->
 {% block postloadjs %}
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
