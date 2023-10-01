@@ -52,4 +52,3 @@ class Testimonial(models.Model):
     # Return summary of testimonial
     def __str__(self):
         return f'{self.customer} thoughts on {self.product.name}'
-

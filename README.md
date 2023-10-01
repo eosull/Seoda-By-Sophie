@@ -16,7 +16,6 @@ The live site can be found [here](https://seoda-by-sophie-35b513cfd1a1.herokuapp
 - [Tools and Technologies](#tools-and-technologies)
 - [Marketing](#marketing)
 - [Testing](#testing)
-- [Bugs](#bugs)
 - [Deployment](#deployment)
 - [Credits](#credits)
 
@@ -180,12 +179,7 @@ A newsletter was implemented in the footer of the site using Mailchimp. This giv
 - [Code Institute Student Template](https://github.com/Code-Institute-Org/gitpod-full-template): Template for repository
 
 # Testing
-Testing was completed throughout the development of the site as can be seen in the [Testing](TESTING.md) file. This included manual and automated tests for functionality, accessibility, code validation and site goals.
-
-## Manual Testing
-Accesibility testing completed using Chrome Developer Tools [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) feature. HTML code was validated using [W3 Validation](https://validator.w3.org/) and [Jigsaw CSS Validation Service](https://jigsaw.w3.org/css-validator/) was used to validate CSS code. Javascript code was tested using [JSHint](https://jshint.com/) while Python code formatting was tested tested continuously during development using [pycodestyle](https://pypi.org/project/pycodestyle/) extenstion in VS code for Gitpod.
-
-# Bugs
+Testing was completed throughout the development of the site as can be seen in the [Testing](TESTING.md) file. This included manual tests for functionality, accessibility, code validation and site goals.
 
 # Deployment
 
